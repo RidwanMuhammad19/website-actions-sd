@@ -4,27 +4,53 @@ import Berita from "../view/home/berita";
 import Kurikulum from "../view/home/kurikulum";
 import Informasi from "../view/home/informasi";
 import ELearning from "../view/home/e-learning";
-import Potensi from "../view/home/prestasi";
+import Prestasi from "../view/home/prestasi";
 
-export async function getServerSideProps() {
-  const response = await fetch(
-    "https://actions-api-sd.sandboxindonesia.id/api/berita"
+export async function getServerSideProps({ query }) {
+  //BERITA
+  const reaquestListBerita = await fetch(
+    `https://actions-api-sd.sandboxindonesia.id/api/berita?search=${query.search}`
   );
-  const listBerita = await response.json();
+  const requestKategoriBerita = await fetch(
+    "https://actions-api-sd.sandboxindonesia.id/api/kategori-berita"
+  );
+  const listKategoriBerita = await requestKategoriBerita.json();
+  const listBerita = await reaquestListBerita.json();
+
+  //POTENSI
+  const requestListPrestasi = await fetch(
+    "https://actions-api-sd.sandboxindonesia.id/api/prestasi"
+  );
+  const listPrestasi = await requestListPrestasi.json();
+
+  //E-LEARNING
+  const requestELearning = await fetch(
+    "https://actions-api-sd.sandboxindonesia.id/api/elearning"
+  );
+  const dataELearning = await requestELearning.json();
+
   return {
-    props: { listBerita },
+    props: { listBerita, listKategoriBerita, listPrestasi, dataELearning },
   };
 }
 
-const Home = ({ listBerita }) => {
+const Home = ({
+  listBerita,
+  listKategoriBerita,
+  listPrestasi,
+  dataELearning,
+}) => {
   return (
     <Layouts>
       <Hero />
-      <Berita listBerita={listBerita} />
+      <Berita
+        listBerita={listBerita?.data}
+        listKategoriBerita={listKategoriBerita?.data}
+      />
       <Kurikulum />
       <Informasi />
-      <ELearning />
-      <Potensi />
+      <ELearning dataELearning={dataELearning?.data?.[0]} />
+      <Prestasi listPrestasi={listPrestasi} />
     </Layouts>
   );
 };

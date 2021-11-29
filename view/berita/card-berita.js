@@ -2,36 +2,41 @@ import { Box, Stack, Image, Text, Avatar, Icon, Link } from "@chakra-ui/react";
 import { Calendar as CalendarIcon } from "react-feather";
 
 const CardBerita = ({
+  idx,
   gambar,
   kategori,
   isi,
   penulis,
   judul,
   waktu_publikasi,
+  avatar,
 }) => {
   return (
     <Stack mb="4.688rem" direction={{ base: "column", lg: "row" }} spacing={2}>
       <Box flex={1}>
-        <Box
-          position="absolute"
-          right={{ xs: "5%", md: "60%" }}
-          p={{ xs: ".8rem", md: ".5rem" }}
-        >
+        {idx === 0 && (
           <Box
-            w="54px"
-            h="28px"
-            bgColor="info.400"
-            color="white"
-            display="flex"
-            borderRadius="0.625rem"
-            justifyContent="center"
-            alignItems="center"
-            fontSize="0.875rem"
+            position="absolute"
+            right={{ xs: "5%", md: "60%" }}
+            p={{ xs: ".8rem", md: ".5rem" }}
           >
-            New
+            <Box
+              w="54px"
+              h="28px"
+              bgColor="info.400"
+              color="white"
+              display="flex"
+              borderRadius="0.625rem"
+              justifyContent="center"
+              alignItems="center"
+              fontSize="0.875rem"
+            >
+              New
+            </Box>
           </Box>
-        </Box>
+        )}
         <Image
+          boxShadow="xl"
           borderRadius="1.25rem"
           w={{ base: "100%", md: "300px" }}
           h={{ base: "auto", md: "194.59px" }}
@@ -59,7 +64,7 @@ const CardBerita = ({
 
         <Stack direction="row" alignItems="center" spacing={3}>
           <Avatar
-            // src={user_image ?? user_image}
+            src={avatar}
             name={penulis}
             alt="image-user"
           />

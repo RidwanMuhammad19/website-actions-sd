@@ -64,51 +64,42 @@ const Hero = () => {
             justifyContent="center"
             position="relative"
           >
-            <Box borderRadius="30px" display="flex" mt="80px">
-              <ImageChakra
-                src="/assets/image/2.jpg"
-                alt="slider1"
-                width="409px"
-                height="283px"
-                borderRadius="30px"
-              />
-            </Box>
             <Box
-              borderRadius="40px"
-              display="flex"
+              width="409px"
+              height="283px"
+              borderRadius="1.875rem"
+              border="10px solid white"
+              bgSize="cover"
+              bgRepeat="no-repeat"
+              bgImage="url('/assets/image/2.JPG')"
+            ></Box>
+
+            <Box
+              w="346px"
+              h="224px"
               position="absolute"
               top="230px"
-              left="-110px"
-              borderWidth="10px"
-              borderColor="white"
-            >
-              <ImageChakra
-                src="/assets/image/1.jpg"
-                alt="slider1"
-                width="346px"
-                height="224px"
-                borderRadius="30px"
-                objectFit="cover"
-              />
-            </Box>
+              left="-20%"
+              borderRadius="1.875rem"
+              border="10px solid white"
+              bgSize="cover"
+              bgRepeat="no-repeat"
+              bgImage="url('/assets/polcil.JPG')"
+            ></Box>
+
             <Box
-              borderRadius="40px"
-              display="flex"
               position="absolute"
               top="180px"
-              right="-60px"
-              borderWidth="10px"
-              borderColor="white"
-            >
-              <ImageChakra
-                src="/assets/image/5.JPG"
-                alt="slider1"
-                width="279px"
-                height="355px"
-                borderRadius="30px"
-                objectFit="cover"
-              />
-            </Box>
+              right="3%"
+              w="279px"
+              h="355px"
+              bg="warning.500"
+              borderRadius="1.875rem"
+              border="10px solid white"
+              bgSize="cover"
+              bgRepeat="no-repeat"
+              bgImage="url('/assets/image/4.JPG')"
+            ></Box>
           </Box>
         </Stack>
       </Container>

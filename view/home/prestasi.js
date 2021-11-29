@@ -11,7 +11,7 @@ import { Row, Col } from "react-grid-system";
 import CardPrestasi from "../../component/card-prestasi";
 import TextHeader from "../../component/text-heder-section";
 
-const Potensi = () => {
+const Potensi = ({ listPrestasi }) => {
   const images = [
     {
       id: 1,
@@ -92,33 +92,23 @@ const Potensi = () => {
           right="0"
           bottom="0"
           backgroundImage="./assets/background/prestasiright.png"
-          width={{xs:"30%", md:"20%"}}
+          width={{ xs: "30%", md: "20%" }}
           height="30%"
           backgroundRepeat="no-repeat"
         />
       </Stack>
-
-      {/* <Box display="block" position="relative">
-        <Box
-          position="absolute"
-          top="-100px"
-          bgImage="url('/assets/background/prestasi.png')"
-          width={{ xs: "35%", md: "25%" }}
-          height={{ xs: "300%", md: "330px" }}
-          backgroundRepeat="no-repeat"
-          backgroundSize="cover"
-        />
-       
-      </Box> */}
 
       <Container maxW="6xl">
         <Box py={{ xs: 0, md: 10 }} mt="6rem">
           <TextHeader text="PRESTASI" width="159px" />
         </Box>
         <Box as={Row} py="10">
-          {images.map((el) => (
+          {listPrestasi?.data?.map((el) => (
             <Box key={el.id} my="5.25rem" sm={12} md={6} lg={4} as={Col}>
-              <CardPrestasi title={el.title} image={el.image} />
+              <CardPrestasi
+                title={el.judul}
+                image={`https://actions-api-sd.sandboxindonesia.id/storage/${el.gambar}`}
+              />
             </Box>
           ))}
         </Box>

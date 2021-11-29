@@ -22,7 +22,7 @@ const Informasi = () => {
       icon: "/assets/informasi/1.png",
       label: "Keunggulan SD Muhammadiyah Klaten Utara",
       listDetail: [
-        { 
+        {
           id: 1,
           text: "Tahfidz Juz 30",
         },
@@ -32,27 +32,27 @@ const Informasi = () => {
         },
         {
           id: 3,
-          text: "Tahfidz Juz 30",
+          text: "Full Day Islamic School",
         },
         {
           id: 4,
-          text: "Hafal hadist pilihan dan doa harian",
+          text: "Piloting Pendidikan Karakter Bangsa",
         },
         {
           id: 5,
-          text: "Tahfidz Juz 30",
+          text: "Lokasi Belajar Nyaman, Jauh dari Keramaian",
         },
         {
           id: 6,
-          text: "Hafal hadist pilihan dan doa harian",
+          text: "Wisuda Hafalan Al-Quran Setaiap Tahun Ajaran",
         },
         {
           id: 7,
-          text: "Tahfidz Juz 30",
+          text: "Penanaman Nilai Keislaman",
         },
         {
           id: 8,
-          text: "Hafal hadist pilihan dan doa harian",
+          text: "Pembinaan Tata Tertib",
         },
       ],
     },
@@ -63,7 +63,23 @@ const Informasi = () => {
       listDetail: [
         {
           id: 1,
-          text: "Tahfidz Juz 30",
+          text: "1 (satu) lembar pas foto berwarna ukuran 3×4",
+        },
+        {
+          id: 2,
+          text: "1 (satu) lembar fotokopi Akte kelahiran anak",
+        },
+        {
+          id: 3,
+          text: "1 (satu) lembar fotokopi Kartu Keluarga",
+        },
+        {
+          id: 4,
+          text: "1 (satu) set fotokopi Rapor sekolah sebelumnya",
+        },
+        {
+          id: 5,
+          text: "1 (satu) lembar Pernyataan Kerjasama yang telah ditanda tangani",
         },
       ],
     },
@@ -74,15 +90,11 @@ const Informasi = () => {
       listDetail: [
         {
           id: 1,
-          text: "Tahfidz Juz 30",
+          text: "Waktu Pendaftaran Setiap Hari pada jam Kerja",
         },
         {
           id: 2,
-          text: "Hafal hadist pilihan dan doa harian",
-        },
-        {
-          id: 3,
-          text: "Tahfidz Juz 30",
+          text: "SD Muhammadiyah Klaten Utara",
         },
       ],
     },
@@ -118,24 +130,29 @@ const Informasi = () => {
               {datas.map((el) => (
                 <Tab
                   as={Box}
-                  _selected={{ color: "white", bg: "primary.600" }}
+                  _selected={{
+                    color: "white",
+                    bg: "primary.600",
+                    boxShadow: "xl",
+                  }}
                   color="primary.600"
                   _hover={{
                     color: "white",
                     bg: "primary.600",
                     cursor: "pointer",
+                    boxShadow: "xl",
                   }}
                   _focus={{
                     color: "white",
                     bg: "primary.600",
                     cursor: "pointer",
+                    boxShadow: "xl",
                   }}
                   display="flex"
                   mb={5}
                   flexDir="row"
                   borderRadius="20px"
                   width="305px"
-                  boxShadow="xl"
                   borderWidth="1px"
                   alignItems="center"
                   p={5}
@@ -158,6 +175,8 @@ const Informasi = () => {
                         borderRadius="full"
                         px={1}
                         py={{ xs: 0, md: 1 }}
+                        w="38px"
+                        h="38px"
                       >
                         <CheckIcon
                           w={{ xs: 4, md: 6 }}

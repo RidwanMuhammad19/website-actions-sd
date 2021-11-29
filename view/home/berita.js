@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import {
   Box,
   Container,
@@ -8,14 +9,27 @@ import {
   Image,
   InputRightElement,
 } from "@chakra-ui/react";
+import { useForm } from "react-hook-form";
 import { Search2Icon } from "@chakra-ui/icons";
 import { Row, Col } from "react-grid-system";
+import { useDebounce } from "use-debounce";
 import CustomButton from "../../component/custom-button";
 import CardBerita from "../berita/card-berita";
 import TextHeader from "../../component/text-heder-section";
+import { useRouter } from "next/router";
 
-const Berita = ({ categoryBerita, listBerita }) => {
-  console.log(listBerita, "list berita")
+const Berita = ({ listKategoriBerita, listBerita }) => {
+  const { register, watch } = useForm();
+  const watchSearch = watch("search", null);
+  const [debonceSearch] = useDebounce(watchSearch, 1000);
+
+  const router = useRouter();
+  useEffect(() => {
+    router.push(`?search=${debonceSearch}`, "", {
+      scroll: false,
+    });
+  }, [debonceSearch]);
+
   return (
     <Box as="section" px={{ xs: 5, md: 0 }}>
       {/* SUBSTRACT BACKGROUND */}
@@ -29,8 +43,8 @@ const Berita = ({ categoryBerita, listBerita }) => {
       <Box mt={{ xs: "5rem", md: "10rem" }} maxW="6xl" as={Container}>
         <Box as={Row}>
           <Box sm={12} md={8} lg={8} as={Col}>
-            {listBerita?.data?.slice(0, 3).map((el) => (
-              <CardBerita {...el} />
+            {listBerita?.slice(0, 3).map((el, idx) => (
+              <CardBerita {...el} idx={idx} />
             ))}
           </Box>
 
@@ -38,7 +52,7 @@ const Berita = ({ categoryBerita, listBerita }) => {
             <Box color="secondary.600">
               <InputGroup>
                 <Input
-                  name="search"
+                  {...register("search")}
                   borderRadius="10px"
                   placeholder="Cari Berita"
                 />
@@ -50,14 +64,14 @@ const Berita = ({ categoryBerita, listBerita }) => {
                 borderRadius="10px"
                 borderWidth="1px"
                 lineHeight="35px"
-                p={5}
+                px={5}
+                py={5}
                 mt={5}
-                height="273px"
               >
                 <Text fontSize="1.125rem" fontWeight="600">
                   Kategori
                 </Text>
-                {categoryBerita?.map((el) => (
+                {listKategoriBerita?.map((el) => (
                   <Box
                     key={el.id}
                     display="flex"
@@ -66,6 +80,7 @@ const Berita = ({ categoryBerita, listBerita }) => {
                     fontWeight="400"
                   >
                     <Text>{el.nama}</Text>
+                    <Text>{`( ${el.berita_count} )`}</Text>
                   </Box>
                 ))}
               </Box>

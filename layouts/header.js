@@ -132,6 +132,11 @@ const DesktopNav = () => {
                   borderBottomWidth: "2px",
                   borderBottomColor: "primary.600",
                 }}
+                _selected={{
+                  boxShadow: "none",
+                  borderBottomWidth: "2px",
+                  borderBottomColor: "primary.600",
+                }}
               >
                 {navItem.label}
               </Link>

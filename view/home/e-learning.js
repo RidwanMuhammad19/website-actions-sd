@@ -2,7 +2,8 @@ import React from "react";
 import { Container, Stack, Box, Text, Icon, Image } from "@chakra-ui/react";
 import TextHeader from "../../component/text-heder-section";
 
-const ELearning = () => {
+const ELearning = ({ dataELearning }) => {
+  console.log(dataELearning, "data");
   const media = [
     {
       id: 1,
@@ -44,12 +45,11 @@ const ELearning = () => {
               lineHeight={{ xs: "2rem", md: "2.563rem" }}
               letterSpacing="0.094rem"
             >
-              Program E - Learning sebagai media pembelajaran jarak jauh. lorem
-              ipsum dolor sit amet Microsoft Teams Microsoft Teams Program E -
-              Learning sebagai media pembelajaran jarak jauh. lorem ipsum dolor
-              sit amet Microsoft Teams Microsoft TeamsProgram E - Learning
-              sebagai media pembelajaran jarak jauh. lorem ipsum dolor sit amet
-              Microsoft Teams Microsoft
+              e-learning bisa diakses oleh seluruh siswa tanpa batas wilayah.
+              Dengan begitu, siswa bisa menikmati pendidikan dengan kualitas
+              terbaik dimanapun mereka tinggal. Bahkan anak-anak yang berada di
+              luar negeri karena pekerjaan orang tua mereka tetap bisa mengakses
+              haknya untuk belajar dengan kurikulum Indonesia.
             </Text>
           </Box>
         </Stack>

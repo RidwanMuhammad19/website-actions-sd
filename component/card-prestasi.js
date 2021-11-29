@@ -7,6 +7,7 @@ const CardPrestasi = ({ image, title }) => {
         borderRadius="1.875rem"
         w="300px"
         h="300px"
+        objectFit="cover"
         src={image}
         alt={title}
       />
