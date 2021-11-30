@@ -103,7 +103,7 @@ const Informasi = () => {
   return (
     <Box>
       <Container
-        maxW="6xl"
+        maxW="7xl"
         height="100%"
         py={{ xs: 10, md: 20 }}
         px={{ xs: 10, md: 0 }}
@@ -152,21 +152,37 @@ const Informasi = () => {
                   mb={5}
                   flexDir="row"
                   borderRadius="20px"
-                  width="305px"
+                  width={{ xs: "100px", md: "305px" }}
                   borderWidth="1px"
                   alignItems="center"
                   p={5}
                 >
-                  <Image src={el.icon} alt="icon" w="50" h="50" mr={5} />
-                  <Text fontSize={{ xs: "14px", md: "20px" }} fontWeight="400">
+                  <Image
+                    src={el.icon}
+                    alt="icon"
+                    w="50"
+                    h="50"
+                    mr={{ xs: 0, md: 5 }}
+                  />
+                  <Text
+                    display={{ xs: "none", md: "flex" }}
+                    fontSize={{ xs: "14px", md: "20px" }}
+                    fontWeight="400"
+                  >
                     {el.label}
                   </Text>
                 </Tab>
               ))}
             </TabList>
-            <TabPanels ml={20}>
+            <TabPanels ml="24px">
               {datas.map((el) => (
-                <TabPanel as={Box} key={el.id} display="flex" flexDir="column">
+                <TabPanel
+                  as={Box}
+                  key={el.id}
+                  display="flex"
+                  flexDir="column"
+                  pt="0"
+                >
                   {el.listDetail.map((item) => (
                     <Box display="flex" flexDir="row" pb={{ xs: 2, md: 8 }}>
                       <Box
@@ -175,8 +191,8 @@ const Informasi = () => {
                         borderRadius="full"
                         px={1}
                         py={{ xs: 0, md: 1 }}
-                        w="38px"
-                        h="38px"
+                        w={{ xs: "28px", md: "38px" }}
+                        h={{ xs: "28px", md: "38px" }}
                       >
                         <CheckIcon
                           w={{ xs: 4, md: 6 }}
@@ -203,6 +219,7 @@ const Informasi = () => {
         </Stack>
         <CustomButton
           text="DAFTAR SEKARANG"
+          href="#"
           color="white"
           bg="primary.400"
           hoverBg="primary.500"

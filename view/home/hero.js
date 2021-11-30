@@ -30,13 +30,20 @@ const Hero = () => {
           backgroundRepeat="no-repeat"
         />
       </Stack>
-      <Container maxW="6xl">
+      <Container maxW="7xl">
         <Stack height="calc(100vh - 80px)" direction="row">
-          <Box flex={1} display="flex" flexDir="column" mt="80px">
+          <Box
+            flex={1}
+            display="flex"
+            flexDir="column"
+            mt="80px"
+            alignItems={{ xs: "center", md: "flex-start" }}
+          >
             <Text
-              fontSize={{ base: "35px", md: "50px" }}
+              textAlign={{ xs: "center", md: "left" }}
+              fontSize={{ xs: "30px", md: "55px" }}
               fontWeight="600"
-              lineHeight={{ base: "45px", md: "75px" }}
+              lineHeight={{ xs: "45px", md: "75px" }}
               color="primary.600"
             >
               SD Muhammadiyah Klaten Utara
@@ -72,34 +79,36 @@ const Hero = () => {
               bgSize="cover"
               bgRepeat="no-repeat"
               bgImage="url('/assets/image/2.JPG')"
-            ></Box>
-
+            />
             <Box
-              w="346px"
-              h="224px"
+              display="flex"
+              alignItems="center"
+              top="120px"
               position="absolute"
-              top="230px"
-              left="-20%"
-              borderRadius="1.875rem"
-              border="10px solid white"
-              bgSize="cover"
-              bgRepeat="no-repeat"
-              bgImage="url('/assets/polcil.JPG')"
-            ></Box>
+            >
+              <Box
+                w="346px"
+                h="224px"
+                mr={8}
+                borderRadius="1.875rem"
+                border="10px solid white"
+                bgSize="cover"
+                bgRepeat="no-repeat"
+                bgImage="url('/assets/polcil.JPG')"
+              />
 
-            <Box
-              position="absolute"
-              top="180px"
-              right="3%"
-              w="279px"
-              h="355px"
-              bg="warning.500"
-              borderRadius="1.875rem"
-              border="10px solid white"
-              bgSize="cover"
-              bgRepeat="no-repeat"
-              bgImage="url('/assets/image/4.JPG')"
-            ></Box>
+              <Box
+                right="3%"
+                w="279px"
+                h="355px"
+                bg="warning.500"
+                borderRadius="1.875rem"
+                border="10px solid white"
+                bgSize="cover"
+                bgRepeat="no-repeat"
+                bgImage="url('/assets/image/4.JPG')"
+              />
+            </Box>
           </Box>
         </Stack>
       </Container>

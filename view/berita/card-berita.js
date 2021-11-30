@@ -12,12 +12,12 @@ const CardBerita = ({
   avatar,
 }) => {
   return (
-    <Stack mb="4.688rem" direction={{ base: "column", lg: "row" }} spacing={2}>
+    <Stack mb="4.688rem" direction={{ base: "column", lg: "row" }} spacing={0} alignItems="center">
       <Box flex={1}>
         {idx === 0 && (
           <Box
             position="absolute"
-            right={{ xs: "5%", md: "60%" }}
+            right={{ xs: "5%", md: "63%" }}
             p={{ xs: ".8rem", md: ".5rem" }}
           >
             <Box
@@ -39,13 +39,13 @@ const CardBerita = ({
           boxShadow="xl"
           borderRadius="1.25rem"
           w={{ base: "100%", md: "300px" }}
-          h={{ base: "auto", md: "194.59px" }}
+          h={{ base: "auto", md: "220px" }}
           src={`https://actions-api-sd.sandboxindonesia.id/storage/${gambar}`}
           alt="berita"
         />
       </Box>
 
-      <Stack flex={1.3} spacing={3} px="1rem" py=".2rem">
+      <Stack flex={1.5} spacing={3} px="1rem" py=".2rem">
         <Text fontSize="1rem" color="info.500" fontWeight={400}>
           {kategori}
         </Text>
@@ -55,7 +55,7 @@ const CardBerita = ({
         </Text>
 
         <Text color="text.description" fontSize="0.875rem">
-          {isi?.length <= 90 ? isi : `${isi?.slice(0, 90)} ...`}
+          {isi?.length <= 90 ? isi : `${isi?.slice(0, 45)} ...`}
         </Text>
 
         <Link color="info.500" fontSize="sm">
@@ -63,19 +63,15 @@ const CardBerita = ({
         </Link>
 
         <Stack direction="row" alignItems="center" spacing={3}>
-          <Avatar
-            src={avatar}
-            name={penulis}
-            alt="image-user"
-          />
+          <Avatar src={avatar} name={penulis} alt="image-user" />
 
-          <Stack spacing={1}>
+          <Stack spacing={0}>
             <Text color="text.subtitle" fontSize="0.875rem">
               {penulis}
             </Text>
             <Stack direction="row" alignItems="center" spacing={2}>
-              <Icon color="text.muted" as={CalendarIcon} />
-              <Text color="text.muted" fontSize="0.875rem">
+              <Icon color="secondary.700" as={CalendarIcon} />
+              <Text color="secondary.700" fontSize="0.875rem">
                 {waktu_publikasi}
               </Text>
             </Stack>

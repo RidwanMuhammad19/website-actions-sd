@@ -1,22 +1,29 @@
 import React from "react";
-import { Container, Box, Stack, Text, Image } from "@chakra-ui/react";
-import TextHeader from "../../component/text-heder-section";
-import CustomButton from "../../component/custom-button";
-import { listKurikulum } from "../../constant";
+import Layouts from "../layouts";
+import { Stack, Box, Text, Container, Image } from "@chakra-ui/react";
+import { Row, Col } from "react-grid-system";
+import { listKurikulum } from "../constant";
+import CustomButton from "../component/custom-button";
+import TextHeader from "../component/text-heder-section";
 
 const Kurikulum = () => {
   return (
-    <Box bg="#F6F8FD">
-      <Container maxW="7xl" py={24}>
+    <Layouts>
+      <Container pt="100px" maxW="6xl" h="100%">
         <TextHeader text="KURIKULUM" width={{ xs: "148px", md: "188px" }} />
-        <Stack flexDir={{ xs: "column", md: "row" }} spacing={0} py={20}>
-          {listKurikulum.slice(0, 4).map((el) => (
+        <Stack as={Row} spacing={0} py={20}>
+          {listKurikulum.map((el) => (
             <Box
               key={el.id}
               flex={1}
               display="flex"
               flexDir="column"
               alignItems="center"
+              sm={12}
+              md={6}
+              lg={4}
+              xl={3}
+              as={Col}
             >
               <Box
                 bg={el.bg}
@@ -46,7 +53,7 @@ const Kurikulum = () => {
                 textAlign="center"
                 px={{ xs: "50px", md: "0" }}
                 mb={10}
-                w={{ xs: "50%", md: "70%" }}
+                w="90%"
               >
                 {el.text}
               </Text>
@@ -54,14 +61,14 @@ const Kurikulum = () => {
           ))}
         </Stack>
         <CustomButton
-          text="LIHAT SEMUA"
-          href="/kurikulum"
-          bg="primary.600"
+          text="BACK"
+          href="/"
+          bg="success.500"
           color="white"
-          hoverBg="primary.700"
+          hoverBg="success.600"
         />
       </Container>
-    </Box>
+    </Layouts>
   );
 };
 

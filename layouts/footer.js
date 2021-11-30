@@ -6,7 +6,7 @@ import YoutubeIcon from "../icons/youtube";
 const TextHeaderFooter = ({ text }) => {
   return (
     <Text
-      fontSize={{ xs: "1.3rem", md: "1.625rem" }}
+      fontSize={{ xs: "1.2rem", md: "1.3rem" }}
       fontWeight="600"
       color="white"
     >
@@ -76,7 +76,7 @@ const Footer = () => {
           direction={{ xs: "column", md: "row" }}
           spacing={{ xs: 5, md: 20 }}
           px={{ xs: 5, md: 0 }}
-          fontSize="1.125rem"
+          fontSize="1.1rem"
           py={{ xs: 10, md: 20 }}
         >
           <Box flex={1}>

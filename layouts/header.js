@@ -58,7 +58,7 @@ export default function WithSubnavigation() {
                 aria-label={"Toggle Navigation"}
               />
             </Flex>
-            <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
+            <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }} >
               <Image
                 src="/assets/logo-sd.png"
                 alt="logo"
@@ -123,7 +123,7 @@ const DesktopNav = () => {
                 color="primary.600"
                 _hover={{
                   textDecoration: "none",
-                  color: "primary.400",
+                  color: "primary.700",
                   borderBottomWidth: "2px",
                   borderBottomColor: "primary.600",
                 }}
@@ -272,7 +272,7 @@ const MobileNavItem = ({ label, children, href }) => {
 const NAV_ITEMS = [
   {
     label: "Beranda",
-    href: "#",
+    href: "/#",
   },
   {
     label: "Profile",

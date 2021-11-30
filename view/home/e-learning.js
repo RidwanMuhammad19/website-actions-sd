@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, Stack, Box, Text, Icon, Image } from "@chakra-ui/react";
 import TextHeader from "../../component/text-heder-section";
+import CustomButton from "../../component/custom-button";
 
 const ELearning = ({ dataELearning }) => {
   console.log(dataELearning, "data");
@@ -21,7 +22,7 @@ const ELearning = ({ dataELearning }) => {
 
   return (
     <Box height="100%" bg="#F6F8FD">
-      <Container maxW="6xl" py={{ xs: 10, md: 20 }} px={{ xs: 10, md: 0 }}>
+      <Container maxW="7xl" py={{ xs: 10, md: 20 }} px={{ xs: 10, md: 0 }}>
         <TextHeader text="E-Learning" width="190px" />
         <Stack
           direction={{ xs: "column", md: "row" }}
@@ -38,12 +39,13 @@ const ELearning = ({ dataELearning }) => {
               boxShadow="2xl"
             />
           </Box>
-          <Box flex={1.2}>
+          <Box flex={1.3}>
             <Text
               color="black"
               fontSize={{ xs: "1.2 rem", md: "1.5rem" }}
-              lineHeight={{ xs: "2rem", md: "2.563rem" }}
+              lineHeight={{ xs: "2rem", md: "41px" }}
               letterSpacing="0.094rem"
+              textAlign="justify"
             >
               e-learning bisa diakses oleh seluruh siswa tanpa batas wilayah.
               Dengan begitu, siswa bisa menikmati pendidikan dengan kualitas
@@ -76,6 +78,13 @@ const ELearning = ({ dataELearning }) => {
             </Box>
           ))}
         </Stack>
+        <CustomButton
+          text="KUNJUNGI E-LEARNING"
+          href="#"
+          color="white"
+          bg="primary.400"
+          hoverBg="primary.500"
+        />
       </Container>
     </Box>
   );
