@@ -58,7 +58,7 @@ export default function WithSubnavigation() {
                 aria-label={"Toggle Navigation"}
               />
             </Flex>
-            <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }} >
+            <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
               <Image
                 src="/assets/logo-sd.png"
                 alt="logo"
@@ -112,35 +112,40 @@ const DesktopNav = () => {
   return (
     <Stack direction={"row"} spacing={10}>
       {NAV_ITEMS.map((navItem) => (
-        <Box key={navItem.label}>
+        <Box key={navItem.id}>
           <Popover trigger={"hover"} placement={"bottom-start"}>
-            <PopoverTrigger>
-              <Link
-                p={2}
-                href={navItem.href ?? "#"}
-                fontSize={"sm"}
-                fontWeight={500}
-                color="primary.600"
+            <Box display="flex" flexDir="column" alignItems="center">
+              <PopoverTrigger>
+                <Link
+                  p={2}
+                  href={navItem.href ?? "#"}
+                  fontSize={"sm"}
+                  fontWeight={500}
+                  color="primary.600"
+                  _hover={{
+                    textDecoration: "none",
+                    color: "primary.700",
+                    borderBottomWidth: "2px",
+                    borderBottomColor: "primary.600",
+                  }}
+                  _focus={{
+                    boxShadow: "none",
+                    borderBottomWidth: "2px",
+                    borderBottomColor: "primary.600",
+                  }}
+                >
+                  {navItem.label}
+                </Link>
+              </PopoverTrigger>
+              {/* <Box
                 _hover={{
-                  textDecoration: "none",
-                  color: "primary.700",
-                  borderBottomWidth: "2px",
-                  borderBottomColor: "primary.600",
+                  height: "0.5",
+                  w: "8",
+                  bg: "primary.500",
+                  borderRadius: "xl",
                 }}
-                _focus={{
-                  boxShadow: "none",
-                  borderBottomWidth: "2px",
-                  borderBottomColor: "primary.600",
-                }}
-                _selected={{
-                  boxShadow: "none",
-                  borderBottomWidth: "2px",
-                  borderBottomColor: "primary.600",
-                }}
-              >
-                {navItem.label}
-              </Link>
-            </PopoverTrigger>
+              /> */}
+            </Box>
 
             {navItem.children && (
               <PopoverContent
@@ -153,7 +158,7 @@ const DesktopNav = () => {
               >
                 <Stack>
                   {navItem.children.map((child) => (
-                    <DesktopSubNav key={child.label} {...child} />
+                    <DesktopSubNav key={child.id} {...child} />
                   ))}
                 </Stack>
               </PopoverContent>
@@ -271,21 +276,26 @@ const MobileNavItem = ({ label, children, href }) => {
 
 const NAV_ITEMS = [
   {
+    id: 1,
     label: "Beranda",
     href: "/#",
   },
   {
+    id: 2,
     label: "Profile",
     children: [
       {
+        id: 1,
         label: "Visi dan Misi",
         href: "#",
       },
       {
+        id: 2,
         label: "Sejarah",
         href: "#",
       },
       {
+        id: 3,
         label: "Extra dan Intrakulikuler",
         href: "#",
       },
@@ -293,14 +303,17 @@ const NAV_ITEMS = [
   },
 
   {
+    id: 3,
     label: "Program",
     href: "/about",
   },
   {
+    id: 4,
     label: "Artikel",
     href: "#",
   },
   {
+    id: 5,
     label: "Kontak",
     href: "#",
   },

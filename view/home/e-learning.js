@@ -3,8 +3,7 @@ import { Container, Stack, Box, Text, Icon, Image } from "@chakra-ui/react";
 import TextHeader from "../../component/text-heder-section";
 import CustomButton from "../../component/custom-button";
 
-const ELearning = ({ dataELearning }) => {
-  console.log(dataELearning, "data");
+const ELearning = ({ data }) => {
   const media = [
     {
       id: 1,
@@ -31,7 +30,7 @@ const ELearning = ({ dataELearning }) => {
         >
           <Box flex={1}>
             <Image
-              src="/assets/e-learning.jpeg"
+              src={`https://actions-api-sd.sandboxindonesia.id/storage/${data?.gambar}`}
               alt="image"
               width="515px"
               height="344px"
@@ -47,11 +46,7 @@ const ELearning = ({ dataELearning }) => {
               letterSpacing="0.094rem"
               textAlign="justify"
             >
-              e-learning bisa diakses oleh seluruh siswa tanpa batas wilayah.
-              Dengan begitu, siswa bisa menikmati pendidikan dengan kualitas
-              terbaik dimanapun mereka tinggal. Bahkan anak-anak yang berada di
-              luar negeri karena pekerjaan orang tua mereka tetap bisa mengakses
-              haknya untuk belajar dengan kurikulum Indonesia.
+              {data?.deskripsi}
             </Text>
           </Box>
         </Stack>

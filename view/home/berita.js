@@ -19,7 +19,7 @@ import { Search2Icon } from "@chakra-ui/icons";
 import { Row, Col } from "react-grid-system";
 import { useDebounce } from "use-debounce";
 import CustomButton from "../../component/custom-button";
-import CardBerita from "../berita/card-berita";
+import CardBerita from "../../view/berita/card-berita";
 import TextHeader from "../../component/text-heder-section";
 import { useRouter } from "next/router";
 import ReactPlayer from "react-player";
@@ -30,18 +30,18 @@ const Berita = ({ listKategoriBerita, listBerita }) => {
   const [debonceSearch] = useDebounce(watchSearch, 1000);
 
   const router = useRouter();
-  useEffect(() => {
-    router.push(`?search=${debonceSearch}`, "", {
-      scroll: false,
-    });
-  }, [debonceSearch]);
+  // useEffect(() => {
+  //   router.push(`?search=${debonceSearch}`, "", {
+  //     scroll: false,
+  //   });
+  // }, [debonceSearch]);
 
   return (
     <Box as="section" px={{ xs: 5, md: 0 }}>
       {/* SUBSTRACT BACKGROUND */}
 
       <Box>
-        <TextHeader text="BERITA" width="78px" />
+        <TextHeader textLine text="BERITA" width="78px" />
       </Box>
 
       {/* BERITA */}
@@ -182,7 +182,7 @@ const Berita = ({ listKategoriBerita, listBerita }) => {
 
         <CustomButton
           text="LIHAT SEMUA"
-          href="/"
+          href="/lihat-semua-berita"
           bg="primary.600"
           color="white"
           hoverBg="primary.700"

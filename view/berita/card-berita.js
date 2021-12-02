@@ -1,7 +1,9 @@
-import { Box, Stack, Image, Text, Avatar, Icon, Link } from "@chakra-ui/react";
+import { Box, Stack, Image, Text, Avatar, Icon } from "@chakra-ui/react";
 import { Calendar as CalendarIcon } from "react-feather";
+import Link from "next/link";
 
 const CardBerita = ({
+  id,
   idx,
   gambar,
   kategori,
@@ -12,7 +14,12 @@ const CardBerita = ({
   avatar,
 }) => {
   return (
-    <Stack mb="4.688rem" direction={{ base: "column", lg: "row" }} spacing={0} alignItems="center">
+    <Stack
+      mb="4.688rem"
+      direction={{ base: "column", lg: "row" }}
+      spacing={0}
+      alignItems="center"
+    >
       <Box flex={1}>
         {idx === 0 && (
           <Box
@@ -58,12 +65,16 @@ const CardBerita = ({
           {isi?.length <= 90 ? isi : `${isi?.slice(0, 45)} ...`}
         </Text>
 
-        <Link color="info.500" fontSize="sm">
-          Baca Selengkapnya
-        </Link>
+        <Text color="info.500" fontSize="sm">
+          <Link href={`detail-berita/${id}`}>Baca Selengkapnya</Link>
+        </Text>
 
         <Stack direction="row" alignItems="center" spacing={3}>
-          <Avatar src={avatar} name={penulis} alt="image-user" />
+          <Avatar
+            src={`https://actions-api-sd.sandboxindonesia.id/storage/${avatar}`}
+            name={penulis}
+            alt="image-user"
+          />
 
           <Stack spacing={0}>
             <Text color="text.subtitle" fontSize="0.875rem">
