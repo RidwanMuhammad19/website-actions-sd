@@ -2,67 +2,64 @@ import React from "react";
 import Layouts from "../layouts";
 import { Stack, Box, Text, Container, Image } from "@chakra-ui/react";
 import { Row, Col } from "react-grid-system";
-import { listKurikulum } from "../constant";
 import CustomButton from "../component/custom-button";
 import TextHeader from "../component/text-heder-section";
 
-const Kurikulum = () => {
+export async function getServerSideProps() {
+  //KURIKULUM
+  const request = await fetch(
+    "https://actions-api-sd.sandboxindonesia.id/api/kurikulum",
+    {
+      headers: {
+        Accept: "application/json",
+      },
+    }
+  );
+
+  const dataKurikulum = await request.json();
+
+  return {
+    props: {
+      dataKurikulum,
+    },
+  };
+}
+
+const Kurikulum = ({ dataKurikulum }) => {
+  const data = dataKurikulum?.data;
   return (
     <Layouts>
       <Container pt="100px" maxW="6xl" h="100%">
         <TextHeader text="KURIKULUM" width={{ xs: "148px", md: "188px" }} />
-        <Stack as={Row} spacing={0} py={20}>
-          {listKurikulum.map((el) => (
+        {data?.map((el) => (
+          <Stack direction="row" spacing={6} py={10}>
             <Box
-              key={el.id}
               flex={1}
+              bg={el.color}
+              h="300px"
+              w="100%"
+              borderRadius="20px"
               display="flex"
-              flexDir="column"
               alignItems="center"
-              sm={12}
-              md={6}
-              lg={4}
-              xl={3}
-              as={Col}
+              justifyContent="center"
+              boxShadow="xl"
             >
-              <Box
-                bg={el.bg}
-                borderRadius="full"
-                w={{ xs: "130px", md: "150px" }}
-                h={{ xs: "130px", md: "150px" }}
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
-              >
-                <Image
-                  src={el.icon}
-                  alt="icon"
-                  w={{ xs: "50px", md: "60px" }}
-                />
-              </Box>
-              <Text
-                fontSize="24px"
-                fontWeight="500"
-                color="black"
-                my={{ xs: 8, md: 10 }}
-              >
-                {el.header}
-              </Text>
-              <Text
-                fontSize="18px"
-                textAlign="center"
-                px={{ xs: "50px", md: "0" }}
-                mb={10}
-                w="90%"
-              >
-                {el.text}
-              </Text>
+              <Image
+                src={`https://actions-api-sd.sandboxindonesia.id/storage/${el?.gambar}`}
+                h="80px"
+              />
             </Box>
-          ))}
-        </Stack>
+            <Box flex={2} pl={5}>
+              <Text fontSize="24px" fontWeight="600" color="primary.600" pb={5}>
+                {el.nama_kurikulum?.toUpperCase()}
+              </Text>
+              <Text color="secondary.500">{el?.deskripsi}</Text>
+            </Box>
+          </Stack>
+        ))}
         <CustomButton
           text="BACK"
-          href="/"
+          href="/#kurikulum"
           bg="success.500"
           color="white"
           hoverBg="success.600"

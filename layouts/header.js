@@ -137,14 +137,6 @@ const DesktopNav = () => {
                   {navItem.label}
                 </Link>
               </PopoverTrigger>
-              {/* <Box
-                _hover={{
-                  height: "0.5",
-                  w: "8",
-                  bg: "primary.500",
-                  borderRadius: "xl",
-                }}
-              /> */}
             </Box>
 
             {navItem.children && (

@@ -3,7 +3,7 @@ import { Calendar as CalendarIcon } from "react-feather";
 import Link from "next/link";
 
 const CardBerita = ({
-  id,
+  slug,
   idx,
   gambar,
   kategori,
@@ -66,15 +66,19 @@ const CardBerita = ({
         </Text>
 
         <Text color="info.500" fontSize="sm">
-          <Link href={`detail-berita/${id}`}>Baca Selengkapnya</Link>
+          <Link href={`berita/${slug}`}>Baca Selengkapnya</Link>
         </Text>
 
         <Stack direction="row" alignItems="center" spacing={3}>
-          <Avatar
-            src={`https://actions-api-sd.sandboxindonesia.id/storage/${avatar}`}
-            name={penulis}
-            alt="image-user"
-          />
+          {avatar ? (
+            <Image
+              src={`https://actions-api-sd.sandboxindonesia.id/storage/${avatar}`}
+              alt="image-user"
+              w="50px"
+            />
+          ) : (
+            <Avatar name={penulis} alt="image-user" />
+          )}
 
           <Stack spacing={0}>
             <Text color="text.subtitle" fontSize="0.875rem">

@@ -141,7 +141,7 @@ const Berita = ({ listKategoriBerita, listBerita }) => {
                     </Tab>
                   </TabList>
                 </Stack>
-                <Box py={2}>
+                {/* <Box py={2}>
                   <TabPanels>
                     <TabPanel>
                       <iframe
@@ -174,7 +174,7 @@ const Berita = ({ listKategoriBerita, listBerita }) => {
                       />
                     </TabPanel>
                   </TabPanels>
-                </Box>
+                </Box> */}
               </Box>
             </Box>
           </Box>

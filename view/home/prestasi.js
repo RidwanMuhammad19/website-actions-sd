@@ -1,81 +1,11 @@
-import {
-  Box,
-  Container,
-  Tabs,
-  TabList,
-  TabPanels,
-  TabPanel,
-  Stack,
-} from "@chakra-ui/react";
+import { Box, Container, Stack } from "@chakra-ui/react";
 import { Row, Col } from "react-grid-system";
 import CardPrestasi from "../../component/card-prestasi";
 import TextHeader from "../../component/text-heder-section";
 
 const Potensi = ({ listPrestasi }) => {
-  const images = [
-    {
-      id: 1,
-      image: "/assets/potensi/potensi-1.png",
-      title: "Juara 1 Tahfidz",
-    },
-    {
-      id: 2,
-      image: "/assets/potensi/potensi-2.png",
-      title: "Juara Hafalan Quran",
-    },
-    {
-      id: 3,
-      image: "/assets/potensi/potensi-3.png",
-      title: "Juara Futsal se provinsi",
-    },
-    {
-      id: 4,
-      image: "/assets/potensi/potensi-1.png",
-      title: "Juara 1 Tahfidz",
-    },
-    {
-      id: 5,
-      image: "/assets/potensi/potensi-2.png",
-      title: "Juara Hafalan Quran",
-    },
-    {
-      id: 6,
-      image: "/assets/potensi/potensi-3.png",
-      title: "Juara Futsal se provinsi",
-    },
-    {
-      id: 7,
-      image: "/assets/potensi/potensi-1.png",
-      title: "Juara 1 Tahfidz",
-    },
-    {
-      id: 8,
-      image: "/assets/potensi/potensi-2.png",
-      title: "Juara Hafalan Quran",
-    },
-    {
-      id: 9,
-      image: "/assets/potensi/potensi-3.png",
-      title: "Juara Futsal se provinsi",
-    },
-    // {
-    //   id: 10,
-    //   image: "/assets/potensi/potensi-1.png",
-    //   title: "Juara 1 Tahfidz",
-    // },
-    // {
-    //   id: 11,
-    //   image: "/assets/potensi/potensi-2.png",
-    //   title: "Juara Hafalan Quran",
-    // },
-    // {
-    //   id: 12,
-    //   image: "/assets/potensi/potensi-3.png",
-    //   title: "Juara Futsal se provinsi",
-    // },
-  ];
   return (
-    <Box as="section" height="100%" position="relative">
+    <Box as="section" height="100%" position="relative" id="prestasi">
       {/* SUBSTRACT BACKGROUND */}
 
       <Stack flexDirection="row">
@@ -108,6 +38,7 @@ const Potensi = ({ listPrestasi }) => {
               <CardPrestasi
                 title={el.judul}
                 image={`https://actions-api-sd.sandboxindonesia.id/storage/${el.gambar}`}
+                href={el.id}
               />
             </Box>
           ))}

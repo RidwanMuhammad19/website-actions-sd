@@ -2,15 +2,14 @@ import React from "react";
 import { Container, Box, Stack, Text, Image } from "@chakra-ui/react";
 import TextHeader from "../../component/text-heder-section";
 import CustomButton from "../../component/custom-button";
-import { listKurikulum } from "../../constant";
 
-const Kurikulum = () => {
+const Kurikulum = ({ data }) => {
   return (
-    <Box bg="#F6F8FD">
+    <Box bg="#F6F8FD" id="kurikulum">
       <Container maxW="7xl" py={24}>
         <TextHeader text="KURIKULUM" width={{ xs: "148px", md: "188px" }} />
         <Stack flexDir={{ xs: "column", md: "row" }} spacing={0} py={20}>
-          {listKurikulum.slice(0, 4).map((el) => (
+          {data.slice(0, 4).map((el) => (
             <Box
               key={el.id}
               flex={1}
@@ -19,18 +18,18 @@ const Kurikulum = () => {
               alignItems="center"
             >
               <Box
-                bg={el.bg}
+                bg={el.color}
                 borderRadius="full"
-                w={{ xs: "130px", md: "150px" }}
-                h={{ xs: "130px", md: "150px" }}
+                w={{ xs: "130px", md: "140px" }}
+                h={{ xs: "130px", md: "140px" }}
                 display="flex"
                 alignItems="center"
                 justifyContent="center"
               >
                 <Image
-                  src={el.icon}
+                  src={`https://actions-api-sd.sandboxindonesia.id/storage/${el.gambar}`}
                   alt="icon"
-                  w={{ xs: "50px", md: "60px" }}
+                  h={{ xs: "50px", md: "50px" }}
                 />
               </Box>
               <Text
@@ -39,7 +38,7 @@ const Kurikulum = () => {
                 color="black"
                 my={{ xs: 8, md: 10 }}
               >
-                {el.header}
+                {el.nama_kurikulum}
               </Text>
               <Text
                 fontSize="18px"
@@ -48,7 +47,9 @@ const Kurikulum = () => {
                 mb={10}
                 w={{ xs: "50%", md: "70%" }}
               >
-                {el.text}
+                {el.deskripsi?.length <= 70
+                  ? el?.deskripsi
+                  : `${el?.deskripsi?.slice(0, 70)} ...`}
               </Text>
             </Box>
           ))}

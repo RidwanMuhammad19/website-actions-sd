@@ -15,90 +15,8 @@ import {
 import { CheckIcon } from "@chakra-ui/icons";
 import CustomButton from "../../component/custom-button";
 
-const Informasi = () => {
-  const datas = [
-    {
-      id: 1,
-      icon: "/assets/informasi/1.png",
-      label: "Keunggulan SD Muhammadiyah Klaten Utara",
-      listDetail: [
-        {
-          id: 1,
-          text: "Tahfidz Juz 30",
-        },
-        {
-          id: 2,
-          text: "Hafal hadist pilihan dan doa harian",
-        },
-        {
-          id: 3,
-          text: "Full Day Islamic School",
-        },
-        {
-          id: 4,
-          text: "Piloting Pendidikan Karakter Bangsa",
-        },
-        {
-          id: 5,
-          text: "Lokasi Belajar Nyaman, Jauh dari Keramaian",
-        },
-        {
-          id: 6,
-          text: "Wisuda Hafalan Al-Quran Setaiap Tahun Ajaran",
-        },
-        {
-          id: 7,
-          text: "Penanaman Nilai Keislaman",
-        },
-        {
-          id: 8,
-          text: "Pembinaan Tata Tertib",
-        },
-      ],
-    },
-    {
-      id: 2,
-      icon: "/assets/informasi/2.png",
-      label: "Syarat Pendaftaran",
-      listDetail: [
-        {
-          id: 1,
-          text: "1 (satu) lembar pas foto berwarna ukuran 3×4",
-        },
-        {
-          id: 2,
-          text: "1 (satu) lembar fotokopi Akte kelahiran anak",
-        },
-        {
-          id: 3,
-          text: "1 (satu) lembar fotokopi Kartu Keluarga",
-        },
-        {
-          id: 4,
-          text: "1 (satu) set fotokopi Rapor sekolah sebelumnya",
-        },
-        {
-          id: 5,
-          text: "1 (satu) lembar Pernyataan Kerjasama yang telah ditanda tangani",
-        },
-      ],
-    },
-    {
-      id: 3,
-      icon: "/assets/informasi/3.png",
-      label: "Waktu dan Tempat Pendaftaran",
-      listDetail: [
-        {
-          id: 1,
-          text: "Waktu Pendaftaran Setiap Hari pada jam Kerja",
-        },
-        {
-          id: 2,
-          text: "SD Muhammadiyah Klaten Utara",
-        },
-      ],
-    },
-  ];
+const Informasi = ({ data }) => {
+  console.log(data, "data is here");
 
   return (
     <Box>
@@ -127,7 +45,7 @@ const Informasi = () => {
         <Stack direction={{ xs: "column", md: "row" }} pt={{ xs: 10, md: 20 }}>
           <Tabs orientation="vertical" variant="soft-rounded">
             <TabList>
-              {datas.map((el) => (
+              {data.map((el) => (
                 <Tab
                   as={Box}
                   _selected={{
@@ -158,7 +76,7 @@ const Informasi = () => {
                   p={5}
                 >
                   <Image
-                    src={el.icon}
+                    src={`https://actions-api-sd.sandboxindonesia.id/storage/${el.icon}`}
                     alt="icon"
                     w="50"
                     h="50"
@@ -169,13 +87,13 @@ const Informasi = () => {
                     fontSize={{ xs: "14px", md: "20px" }}
                     fontWeight="400"
                   >
-                    {el.label}
+                    {el.nama}
                   </Text>
                 </Tab>
               ))}
             </TabList>
             <TabPanels ml="24px">
-              {datas.map((el) => (
+              {data.map((el) => (
                 <TabPanel
                   as={Box}
                   key={el.id}
@@ -183,8 +101,13 @@ const Informasi = () => {
                   flexDir="column"
                   pt="0"
                 >
-                  {el.listDetail.map((item) => (
-                    <Box display="flex" flexDir="row" pb={{ xs: 2, md: 8 }}>
+                  {el.informasi?.map((item) => (
+                    <Box
+                      key={item.id}
+                      display="flex"
+                      flexDir="row"
+                      pb={{ xs: 2, md: 8 }}
+                    >
                       <Box
                         borderWidth={{ xs: "2px", md: "3px" }}
                         borderColor="info.500"
@@ -208,7 +131,7 @@ const Informasi = () => {
                         fontSize={{ xs: "18px", md: "24px" }}
                         lineHeight={{ xs: "25px", md: "35px" }}
                       >
-                        {item.text}
+                        {item.kategori}
                       </Text>
                     </Box>
                   ))}
