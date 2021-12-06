@@ -16,7 +16,6 @@ import { CheckIcon } from "@chakra-ui/icons";
 import CustomButton from "../../component/custom-button";
 
 const Informasi = ({ data }) => {
-  console.log(data, "data is here");
 
   return (
     <Box>

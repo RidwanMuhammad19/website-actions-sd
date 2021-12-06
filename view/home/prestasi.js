@@ -38,7 +38,7 @@ const Potensi = ({ listPrestasi }) => {
               <CardPrestasi
                 title={el.judul}
                 image={`https://actions-api-sd.sandboxindonesia.id/storage/${el.gambar}`}
-                href={el.id}
+                href={el.slug}
               />
             </Box>
           ))}

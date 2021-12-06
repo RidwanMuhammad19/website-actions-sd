@@ -274,7 +274,7 @@ const NAV_ITEMS = [
   },
   {
     id: 2,
-    label: "Profile",
+    label: "Profil",
     children: [
       {
         id: 1,
