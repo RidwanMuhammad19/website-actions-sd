@@ -6,7 +6,7 @@ import Hero from "../view/home/hero";
 import Kurikulum from "../view/home/kurikulum";
 import Prestasi from "../view/home/prestasi";
 
-export async function getServerSideProps({ query }) {
+export async function getServerSideProps() {
   //BERITA
   const reaquestListBerita = await fetch(
     `https://actions-api-sd.sandboxindonesia.id/api/berita`,

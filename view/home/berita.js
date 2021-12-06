@@ -29,7 +29,7 @@ const Berita = ({ listKategoriBerita, listBerita }) => {
   const watchSearch = watch("search", null);
   const [debonceSearch] = useDebounce(watchSearch, 1000);
 
-  const router = useRouter();
+  // const router = useRouter();
   // useEffect(() => {
   //   router.push(`?search=${debonceSearch}`, "", {
   //     scroll: false,
@@ -50,7 +50,7 @@ const Berita = ({ listKategoriBerita, listBerita }) => {
         <Box as={Row}>
           <Box sm={12} md={8} lg={8} as={Col}>
             {listBerita?.slice(0, 3).map((el, idx) => (
-              <CardBerita {...el} idx={idx} />
+              <CardBerita {...el} idx={idx} key={el.id} />
             ))}
           </Box>
 
@@ -141,40 +141,40 @@ const Berita = ({ listKategoriBerita, listBerita }) => {
                     </Tab>
                   </TabList>
                 </Stack>
-                {/* <Box py={2}>
+                <Box py={2}>
                   <TabPanels>
-                    <TabPanel>
+                    {/* <TabPanel>
                       <iframe
                         src="https://www.instagram.com/p/CWpWLz9v5CX/embed"
                         width="100%"
                         height="450"
-                        frameborder="0"
+                        frameBorder="0"
                         scrolling="no"
                         allowtransparency="true"
-                        allowfullscreen="true"
+                        allowFullScreen={true}
                         allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
                       ></iframe>
-                    </TabPanel>
-                    <TabPanel pl={2}>
+                    </TabPanel> */}
+                    {/* <TabPanel pl={2}>
                       <iframe
                         src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fraksyedev&tabs=timeline&width=330&height=450&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
                         width="300"
                         height="450"
                         scrolling="no"
-                        frameborder="0"
-                        allowfullscreen="true"
+                        frameBorder="0"
+                        allowFullScreen="true"
                         allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
                       ></iframe>
-                    </TabPanel>
-                    <TabPanel>
+                    </TabPanel> */}
+                    {/* <TabPanel>
                       <ReactPlayer
                         width="100%"
                         height="450"
                         url="https://www.youtube.com/watch?v=hfPrVBAT6Vc"
                       />
-                    </TabPanel>
+                    </TabPanel> */}
                   </TabPanels>
-                </Box> */}
+                </Box>
               </Box>
             </Box>
           </Box>

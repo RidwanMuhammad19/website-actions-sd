@@ -66,7 +66,7 @@ const CardBerita = ({
         </Text>
 
         <Text color="info.500" fontSize="sm">
-          <Link href={`berita/${slug}`}>Baca Selengkapnya</Link>
+          <Link href={`/berita/${slug}`}>Baca Selengkapnya</Link>
         </Text>
 
         <Stack direction="row" alignItems="center" spacing={3}>
