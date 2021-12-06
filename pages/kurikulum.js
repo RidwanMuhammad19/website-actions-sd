@@ -1,7 +1,6 @@
 import React from "react";
 import Layouts from "../layouts";
 import { Stack, Box, Text, Container, Image } from "@chakra-ui/react";
-import { Row, Col } from "react-grid-system";
 import CustomButton from "../component/custom-button";
 import TextHeader from "../component/text-heder-section";
 
@@ -32,7 +31,7 @@ const Kurikulum = ({ dataKurikulum }) => {
       <Container pt="100px" maxW="6xl" h="100%">
         <TextHeader text="KURIKULUM" width={{ xs: "148px", md: "188px" }} />
         {data?.map((el) => (
-          <Stack direction="row" spacing={6} py={10}>
+          <Stack key={data.id} direction="row" spacing={6} py={10}>
             <Box
               flex={1}
               bg={el.color}
