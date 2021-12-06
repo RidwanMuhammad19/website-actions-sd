@@ -4,20 +4,9 @@ import TextHeader from "../../component/text-heder-section";
 import CustomButton from "../../component/custom-button";
 
 const ELearning = ({ data }) => {
-  const media = [
-    {
-      id: 1,
-      icon: "/assets/icon/microsoft-teams.png",
-      text: "Microsoft Teams",
-      width: "66px",
-    },
-    {
-      id: 2,
-      icon: "/assets/icon/youtube.png",
-      text: "Youtube",
-      width: "66px",
-    },
-  ];
+  const medias = data?.media;
+
+  console.log(medias, "here");
 
   return (
     <Box height="100%" bg="#F6F8FD">
@@ -30,7 +19,8 @@ const ELearning = ({ data }) => {
         >
           <Box flex={1}>
             <Image
-              src={`https://actions-api-sd.sandboxindonesia.id/storage/${data?.gambar}`}
+              // src={`https://actions-api-sd.sandboxindonesia.id/storage/${data?.gambar}`}
+              src="/assets/e-learning.jpeg"
               alt="image"
               width="515px"
               height="344px"
@@ -54,7 +44,7 @@ const ELearning = ({ data }) => {
           <Text fontSize={{ xs: "1.2rem", md: "1.5rem" }} letterSpacing="1.5%">
             Beberapa media E - Learning yang kami gunakan :
           </Text>
-          {media.map((el) => (
+          {medias.map((el) => (
             <Box
               key={el.id}
               pt={5}
@@ -62,13 +52,19 @@ const ELearning = ({ data }) => {
               flexDir="row"
               alignItems="center"
             >
-              <Image src={el.icon} alt="icon" w={{ xs: "55px", md: "66px" }} />
+              <Box w="90px">
+                <Image
+                  src={`https://actions-api-sd.sandboxindonesia.id//storage/${el.icon}`}
+                  alt="icon"
+                  h={{ xs: "55px", md: "66px" }}
+                />
+              </Box>
               <Text
                 fontSize={{ xs: "1.2rem", md: "1.5rem" }}
                 letterSpacing="1.5%"
                 ml={10}
               >
-                {el.text}
+                {el.nama_media}
               </Text>
             </Box>
           ))}
