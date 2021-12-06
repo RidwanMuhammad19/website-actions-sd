@@ -32,7 +32,7 @@ const LihatSemuaBerita = ({ listData }) => {
         <TextHeader textLine text="BERITA" width="78px" />
         <Box as={Row} py={20}>
           {data?.map((el, idx) => (
-            <Box as={Col} sm={12} lg={6}>
+            <Box as={Col} sm={12} lg={6} key={el.id}>
               <CardBerita {...el} idx={idx} />
             </Box>
           ))}

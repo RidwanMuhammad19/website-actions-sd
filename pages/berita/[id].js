@@ -110,7 +110,7 @@ const DetailBerita = ({ dataDetail, beritaOther }) => {
           </Text>
           <Box as={Row}>
             {listBeritaOther?.map((el, idx) => (
-              <Box as={Col} sm={12} lg={6}>
+              <Box as={Col} sm={12} lg={6} key={el.id}>
                 <CardBeritaOther {...el} idx={idx} />
               </Box>
             ))}
