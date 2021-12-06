@@ -66,6 +66,7 @@ const Footer = () => {
       list: "Artikel",
     },
     {
+      id: 5,
       list: "Kontak Kami",
     },
   ];
@@ -106,7 +107,7 @@ const Footer = () => {
               spacing={7}
               alignItems="center"
             >
-              {IconSosmed.map((item) => (
+              {IconSosmed?.map((item) => (
                 <Icon key={item.id} as={item.icon} w="24px" />
               ))}
             </Stack>
@@ -114,7 +115,7 @@ const Footer = () => {
           <Stack direction="row" flex={1}>
             <Box flex={1}>
               <TextHeaderFooter text="Profil Sekolah" />
-              {listProfil.map((item) => (
+              {listProfil?.map((item) => (
                 <Text key={item.id} color="white" lineHeight="3.125rem">
                   {item.list}
                 </Text>
