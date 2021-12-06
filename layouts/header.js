@@ -113,7 +113,11 @@ const DesktopNav = () => {
     <Stack direction={"row"} spacing={10}>
       {NAV_ITEMS.map((navItem) => (
         <Box key={navItem.id}>
-          <Popover trigger={"hover"} placement={"bottom-start"}>
+          <Popover
+            id={navItem.id}
+            trigger={"hover"}
+            placement={"bottom-start"}
+          >
             <Box display="flex" flexDir="column" alignItems="center">
               <PopoverTrigger>
                 <Link
@@ -150,7 +154,7 @@ const DesktopNav = () => {
               >
                 <Stack>
                   {navItem.children.map((child) => (
-                    <DesktopSubNav key={child.id} {...child} />
+                    <DesktopSubNav key={child.label} {...child} />
                   ))}
                 </Stack>
               </PopoverContent>
@@ -207,7 +211,7 @@ const MobileNav = () => {
       display={{ md: "none" }}
     >
       {NAV_ITEMS.map((navItem) => (
-        <MobileNavItem key={navItem.label} {...navItem} />
+        <MobileNavItem key={navItem.id} {...navItem} />
       ))}
     </Stack>
   );
