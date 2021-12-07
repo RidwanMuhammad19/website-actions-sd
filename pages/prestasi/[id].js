@@ -14,9 +14,8 @@ import { CalendarIcon } from "@chakra-ui/icons";
 export async function getServerSideProps(context) {
   const { params: id } = context;
 
-
   const requestDetailPrestasi = await fetch(
-    `https://actions-api-sd.sandboxindonesia.id/api/prestasi/${id.id}`,
+    `https://actions-api-sd.sandboxindonesia.id/api/prestasi/slug/${id.id}`,
     {
       headers: {
         Accept: "application/json",

@@ -7,7 +7,9 @@ import {
   Image as ImageChakra,
 } from "@chakra-ui/react";
 
-const Hero = () => {
+const Hero = ({ data }) => {
+  console.log(data, "iki");
+
   return (
     <Box pt="24">
       <Stack flexDirection="row">
@@ -46,7 +48,7 @@ const Hero = () => {
               lineHeight={{ xs: "45px", md: "75px" }}
               color="primary.600"
             >
-              SD Muhammadiyah Klaten Utara
+              {data?.nama_sekolah}
             </Text>
             <Button
               mt="100px"
@@ -78,7 +80,7 @@ const Hero = () => {
               border="10px solid white"
               bgSize="cover"
               bgRepeat="no-repeat"
-              bgImage="url('/assets/image/2.JPG')"
+              bgImage={`url('https://actions-api-sd.sandboxindonesia.id/storage/${data?.hero_image1}')`}
             />
             <Box
               display="flex"
@@ -94,7 +96,7 @@ const Hero = () => {
                 border="10px solid white"
                 bgSize="cover"
                 bgRepeat="no-repeat"
-                bgImage="url('/assets/polcil.JPG')"
+                bgImage={`url('https://actions-api-sd.sandboxindonesia.id/storage/${data?.hero_image2}')`}
               />
 
               <Box
@@ -106,7 +108,7 @@ const Hero = () => {
                 border="10px solid white"
                 bgSize="cover"
                 bgRepeat="no-repeat"
-                bgImage="url('/assets/image/4.JPG')"
+                bgImage={`url('https://actions-api-sd.sandboxindonesia.id/storage/${data?.hero_image3}')`}
               />
             </Box>
           </Box>

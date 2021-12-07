@@ -6,8 +6,6 @@ import CustomButton from "../../component/custom-button";
 const ELearning = ({ data }) => {
   const medias = data?.media;
 
-  console.log(medias, "here");
-
   return (
     <Box height="100%" bg="#F6F8FD">
       <Container maxW="7xl" py={{ xs: 10, md: 20 }} px={{ xs: 10, md: 0 }}>
@@ -19,8 +17,7 @@ const ELearning = ({ data }) => {
         >
           <Box flex={1}>
             <Image
-              // src={`https://actions-api-sd.sandboxindonesia.id/storage/${data?.gambar}`}
-              src="/assets/e-learning.jpeg"
+              src={`https://actions-api-sd.sandboxindonesia.id/storage/${data?.gambar}`}
               alt="image"
               width="515px"
               height="344px"
@@ -52,7 +49,7 @@ const ELearning = ({ data }) => {
               flexDir="row"
               alignItems="center"
             >
-              <Box w="90px">
+              <Box w="90px" display="flex" justifyContent="center">
                 <Image
                   src={`https://actions-api-sd.sandboxindonesia.id//storage/${el.icon}`}
                   alt="icon"

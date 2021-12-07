@@ -1,4 +1,12 @@
-import { Container, Box, Stack, Text, Icon, Divider } from "@chakra-ui/react";
+import {
+  Container,
+  Box,
+  Stack,
+  Text,
+  Icon,
+  Divider,
+  Link,
+} from "@chakra-ui/react";
 import InstagramIcon from "../icons/instagram";
 import FacebookIcon from "../icons/facebook";
 import YoutubeIcon from "../icons/youtube";
@@ -15,21 +23,26 @@ const TextHeaderFooter = ({ text }) => {
   );
 };
 
-const Footer = () => {
+const Footer = ({ data }) => {
+  console.log(data, "here is data");
+
   const IconSosmed = [
     {
       id: 1,
       icon: InstagramIcon,
+      link: data?.instagram_url,
     },
 
     {
       id: 2,
       icon: FacebookIcon,
+      link: data?.facebook_url,
     },
 
     {
       id: 3,
       icon: YoutubeIcon,
+      link: data?.youtube_url,
     },
   ];
 
@@ -84,21 +97,19 @@ const Footer = () => {
             <Box pb={{ xs: 10, md: 16 }}>
               <TextHeaderFooter text="Alamat" />
               <Text color="white" lineHeight="2.188rem">
-                Alamat JL. Kopral Sudibyo, RT. 1 RW. XI, Perak
-                Gunungan,Barenglor, Gunungan, Bareng Lor, Kec. Klaten Utara,
-                Kabupaten Klaten, Jawa Tengah 57438
+                {data?.alamat}
               </Text>
             </Box>
             <Box pb={{ xs: 10, md: 16 }}>
               <TextHeaderFooter text="Email" />
               <Text color="white" lineHeight="2.188rem">
-                sdmuhammadiyahklatenutara@gmail.com
+                {data?.email}
               </Text>
             </Box>
             <Box pb={{ xs: 10, md: 16 }}>
               <TextHeaderFooter text="Telphone" />
               <Text color="white" lineHeight="2.188rem">
-                (0272) 326984
+                {data?.telepon}
               </Text>
             </Box>
             <Stack
@@ -108,7 +119,13 @@ const Footer = () => {
               alignItems="center"
             >
               {IconSosmed?.map((item) => (
-                <Icon key={item.id} as={item.icon} w="24px" />
+                <Link
+                  href={item.link}
+                  target="_blank"
+                  _focus={{ boxShadow: "none" }}
+                >
+                  <Icon key={item.id} as={item.icon} w="24px" />
+                </Link>
               ))}
             </Stack>
           </Box>
@@ -140,13 +157,15 @@ const Footer = () => {
           alignItems="center"
         >
           {IconSosmed.map((item) => (
-            <Icon key={item.id} as={item.icon} w="24px" />
+            <Link href={item.link}>
+              <Icon key={item.id} as={item.icon} w="24px" />
+            </Link>
           ))}
         </Stack>
         <Divider />
         <Box display="flex" justifyContent="center" py={5}>
           <Text color="white" fontSize="1rem">
-            &copy; 2021 SD Muhammadiyah Klaten Utara
+            &copy; {` ${data?.nama_sekolah}`}
           </Text>
         </Box>
       </Container>

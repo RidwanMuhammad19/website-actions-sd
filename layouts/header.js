@@ -14,6 +14,7 @@ import {
   useColorModeValue,
   useDisclosure,
   Container,
+  Image,
 } from "@chakra-ui/react";
 import {
   HamburgerIcon,
@@ -21,10 +22,11 @@ import {
   ChevronDownIcon,
   ChevronRightIcon,
 } from "@chakra-ui/icons";
-import Image from "next/image";
 
-export default function WithSubnavigation() {
+export default function Navbar({ data }) {
   const { isOpen, onToggle } = useDisclosure();
+
+  console.log(data, "data here");
 
   return (
     <Box w="100%" bg="white" display="block" position="fixed" zIndex="12">
@@ -59,12 +61,14 @@ export default function WithSubnavigation() {
               />
             </Flex>
             <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
-              <Image
-                src="/assets/logo-sd.png"
-                alt="logo"
-                width="253px"
-                height="60px"
-              />
+              <Link href="/" _focus={{ borderRadius: "none" }}>
+                <Image
+                  src={`https://actions-api-sd.sandboxindonesia.id/storage/${data?.logo}`}
+                  alt="logo"
+                  width="253px"
+                  height="60px"
+                />
+              </Link>
             </Flex>
 
             <Stack
@@ -113,12 +117,13 @@ const DesktopNav = () => {
     <Stack direction={"row"} spacing={10}>
       {NAV_ITEMS.map((navItem) => (
         <Box key={navItem.id}>
-          <Popover
-            id={navItem.id}
-            trigger={"hover"}
-            placement={"bottom-start"}
-          >
-            <Box display="flex" flexDir="column" alignItems="center">
+          <Popover id={navItem.id} trigger={"hover"} placement={"bottom-start"}>
+            <Box
+              display="flex"
+              flexDir="column"
+              alignItems="center"
+              _hover={{ h: "4px", bg: "yellow", boxShadow: "none" }}
+            >
               <PopoverTrigger>
                 <Link
                   p={2}
@@ -126,17 +131,8 @@ const DesktopNav = () => {
                   fontSize={"sm"}
                   fontWeight={500}
                   color="primary.600"
-                  _hover={{
-                    textDecoration: "none",
-                    color: "primary.700",
-                    borderBottomWidth: "2px",
-                    borderBottomColor: "primary.600",
-                  }}
-                  _focus={{
-                    boxShadow: "none",
-                    borderBottomWidth: "2px",
-                    borderBottomColor: "primary.600",
-                  }}
+                  _focus={{ boxShadow: "none" }}
+                  _hover={{ textDecor: "none" }}
                 >
                   {navItem.label}
                 </Link>

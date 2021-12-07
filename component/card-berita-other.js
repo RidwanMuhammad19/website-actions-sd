@@ -14,21 +14,13 @@ const CardBeritaOther = ({
   avatar,
 }) => {
   return (
-    <Stack
-      mb="4.688rem"
-      direction={{ base: "column", lg: "row" }}
-      spacing={0}
-    >
-      <Box flex={1}>
+    <Stack mb="4.688rem" direction={{ base: "column", lg: "row" }} spacing={0}>
+      <Box flex={1} position="relative">
         {idx === 0 && (
-          <Box
-            position="absolute"
-            right={{ xs: "5%", md: "63%" }}
-            p={{ xs: ".8rem", md: ".5rem" }}
-          >
+          <Box position="absolute" p={{ xs: ".8rem", md: ".5rem" }} right="0">
             <Box
-              w="50px"
-              h="25px"
+              px={3}
+              py={1}
               bgColor="info.400"
               color="white"
               display="flex"

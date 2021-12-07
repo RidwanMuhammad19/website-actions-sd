@@ -2,12 +2,12 @@ import { Box } from "@chakra-ui/react";
 import Footer from "./footer";
 import Header from "./header";
 
-const Layouts = ({ children }) => {
+const Layouts = ({ children, data }) => {
   return (
     <Box>
-      <Header />
+      <Header data={data} />
       {children}
-      <Footer />
+      <Footer data={data} />
     </Box>
   );
 };

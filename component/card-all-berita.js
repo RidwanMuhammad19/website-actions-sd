@@ -2,7 +2,7 @@ import { Box, Stack, Image, Text, Avatar, Icon } from "@chakra-ui/react";
 import { Calendar as CalendarIcon } from "react-feather";
 import Link from "next/link";
 
-const CardBerita = ({
+const AllBerita = ({
   slug,
   idx,
   gambar,
@@ -13,6 +13,8 @@ const CardBerita = ({
   waktu_publikasi,
   avatar,
 }) => {
+  const dumyText =
+    "Bencana Alam Terjadi di Lumajang Jawa Timur, Gunung Semeru Meletus dengan Kencang, Jam 4 Sore sudah terasa jam 8 Malam";
   return (
     <Stack
       mb="4.688rem"
@@ -20,11 +22,16 @@ const CardBerita = ({
       spacing={0}
       alignItems="center"
     >
-      <Box flex={1} position="relative">
+      <Box flex={1.5} position="relative">
         {idx === 0 && (
-          <Box position="absolute" right="5" p={{ xs: ".8rem", md: ".5rem" }}>
+          <Box
+            position="absolute"
+            p={{ xs: ".8rem", md: ".5rem" }}
+            display="flex"
+            right="3"
+          >
             <Box
-              px={3}
+              px={4}
               py={1}
               bgColor="info.400"
               color="white"
@@ -32,7 +39,7 @@ const CardBerita = ({
               borderRadius="0.625rem"
               justifyContent="center"
               alignItems="center"
-              fontSize="0.875rem"
+              fontSize="0.975rem"
             >
               New
             </Box>
@@ -41,27 +48,31 @@ const CardBerita = ({
         <Image
           boxShadow="xl"
           borderRadius="1.25rem"
-          w={{ base: "100%", md: "300px" }}
-          h={{ base: "auto", md: "220px" }}
+          w={{ base: "100%", md: "400px" }}
+          h={{ base: "auto", md: "290px" }}
           src={`https://actions-api-sd.sandboxindonesia.id/storage/${gambar}`}
           alt="berita"
         />
       </Box>
 
-      <Stack flex={1.5} spacing={3} px="1rem" py=".2rem">
-        <Text fontSize="1rem" color="info.500" fontWeight={400}>
+      <Stack flex={3} spacing={3} px="1rem" py=".2rem">
+        <Text fontSize="1.28rem" color="info.500" fontWeight={400}>
           {kategori}
         </Text>
 
-        <Text color="text.subtitle" fontSize="1.125rem" fontWeight={400}>
-          {judul?.length <= 35 ? judul : `${judul?.slice(0, 35)} ...`}
+        <Text color="text.subtitle" fontSize="1.825rem" fontWeight={400}>
+          {judul}
         </Text>
 
-        <Text color="text.description" fontSize="0.875rem">
-          {isi?.length <= 90 ? isi : `${isi?.slice(0, 45)} ...`}
+        <Text color="text.description" fontSize="1.175rem">
+          {isi?.length <= 150 ? isi : `${isi?.slice(0, 150)} ...`}
         </Text>
 
-        <Text color="info.500" fontSize="sm">
+        <Text
+          color="info.500"
+          _hover={{ color: "info.600" }}
+          fontSize="1.28rem"
+        >
           <Link href={`/berita/${slug}`}>Baca Selengkapnya</Link>
         </Text>
 
@@ -76,13 +87,13 @@ const CardBerita = ({
             <Avatar name={penulis} alt="image-user" />
           )}
 
-          <Stack spacing={0}>
-            <Text color="text.subtitle" fontSize="0.875rem">
+          <Stack spacing={1}>
+            <Text color="text.subtitle" fontSize="0.975rem">
               {penulis}
             </Text>
             <Stack direction="row" alignItems="center" spacing={2}>
               <Icon color="secondary.700" as={CalendarIcon} />
-              <Text color="secondary.700" fontSize="0.875rem">
+              <Text color="secondary.700" fontSize="0.975rem">
                 {waktu_publikasi}
               </Text>
             </Stack>
@@ -93,4 +104,4 @@ const CardBerita = ({
   );
 };
 
-export default CardBerita;
+export default AllBerita;

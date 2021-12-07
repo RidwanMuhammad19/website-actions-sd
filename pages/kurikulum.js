@@ -29,7 +29,9 @@ const Kurikulum = ({ dataKurikulum }) => {
   return (
     <Layouts>
       <Container pt="100px" maxW="6xl" h="100%">
-        <TextHeader text="KURIKULUM" width={{ xs: "148px", md: "188px" }} />
+        <Box pb={16}>
+          <TextHeader text="KURIKULUM" width={{ xs: "148px", md: "188px" }} />
+        </Box>
         {data?.map((el) => (
           <Stack key={data.id} direction="row" spacing={6} py={10}>
             <Box

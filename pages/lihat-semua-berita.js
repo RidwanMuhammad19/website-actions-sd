@@ -4,7 +4,7 @@ import { Row, Col } from "react-grid-system";
 import TextHeader from "../component/text-heder-section";
 import Layouts from "../layouts";
 import CustomButton from "../component/custom-button";
-import CardBerita from "../view/berita/card-berita";
+import CardAllBerita from "../component/card-all-berita";
 
 export async function getServerSideProps() {
   const requestList = await fetch(
@@ -28,13 +28,11 @@ const LihatSemuaBerita = ({ listData }) => {
 
   return (
     <Layouts>
-      <Container py="100px" maxW="6xl" h="100%">
+      <Container py="100px" maxW="7xl" h="100%">
         <TextHeader textLine text="BERITA" width="78px" />
-        <Box as={Row} py={20}>
+        <Box py={20} w="100%">
           {data?.map((el, idx) => (
-            <Box as={Col} sm={12} lg={6} key={el.id}>
-              <CardBerita {...el} idx={idx} />
-            </Box>
+            <CardAllBerita {...el} idx={idx} />
           ))}
         </Box>
         <Box>

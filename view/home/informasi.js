@@ -16,7 +16,6 @@ import { CheckIcon } from "@chakra-ui/icons";
 import CustomButton from "../../component/custom-button";
 
 const Informasi = ({ data }) => {
-
   return (
     <Box>
       <Container
@@ -46,6 +45,7 @@ const Informasi = ({ data }) => {
             <TabList>
               {data.map((el) => (
                 <Tab
+                  key={el.id}
                   as={Box}
                   _selected={{
                     color: "white",
@@ -107,21 +107,23 @@ const Informasi = ({ data }) => {
                       flexDir="row"
                       pb={{ xs: 2, md: 8 }}
                     >
-                      <Box
-                        borderWidth={{ xs: "2px", md: "3px" }}
-                        borderColor="info.500"
-                        borderRadius="full"
-                        px={1}
-                        py={{ xs: 0, md: 1 }}
-                        w={{ xs: "28px", md: "38px" }}
-                        h={{ xs: "28px", md: "38px" }}
-                      >
-                        <CheckIcon
-                          w={{ xs: 4, md: 6 }}
-                          h={{ xs: 4, md: 6 }}
-                          color="info.500"
-                        />
-                      </Box>
+                      {el.informasi?.length > 1 && (
+                        <Box
+                          borderWidth={{ xs: "2px", md: "3px" }}
+                          borderColor="info.500"
+                          borderRadius="full"
+                          px={1}
+                          py={{ xs: 0, md: 1 }}
+                          w={{ xs: "28px", md: "38px" }}
+                          h={{ xs: "28px", md: "38px" }}
+                        >
+                          <CheckIcon
+                            w={{ xs: 4, md: 6 }}
+                            h={{ xs: 4, md: 6 }}
+                            color="info.500"
+                          />
+                        </Box>
+                      )}
 
                       <Text
                         key={item.id}
@@ -130,7 +132,7 @@ const Informasi = ({ data }) => {
                         fontSize={{ xs: "18px", md: "24px" }}
                         lineHeight={{ xs: "25px", md: "35px" }}
                       >
-                        {item.kategori}
+                        {item.deskripsi}
                       </Text>
                     </Box>
                   ))}

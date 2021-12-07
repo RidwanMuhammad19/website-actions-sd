@@ -75,6 +75,17 @@ export async function getServerSideProps() {
   );
   const dataELearning = await requestELearning.json();
 
+  //PROFIL
+  const requestProfil = await fetch(
+    "https://actions-api-sd.sandboxindonesia.id/api/profil-sekolah",
+    {
+      headers: {
+        Accept: "application/json",
+      },
+    }
+  );
+  const dataProfil = await requestProfil.json();
+
   return {
     props: {
       listBerita,
@@ -83,6 +94,7 @@ export async function getServerSideProps() {
       dataELearning,
       listKurikulum,
       listInformasi,
+      dataProfil,
     },
   };
 }
@@ -94,10 +106,11 @@ const Home = ({
   dataELearning,
   listKurikulum,
   listInformasi,
+  dataProfil,
 }) => {
   return (
-    <Layouts>
-      <Hero />
+    <Layouts data={dataProfil?.data}>
+      <Hero data={dataProfil?.data} />
       <Berita
         listBerita={listBerita?.data}
         listKategoriBerita={listKategoriBerita?.data}
