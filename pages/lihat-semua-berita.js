@@ -1,6 +1,5 @@
 import React from "react";
 import { Box, Container } from "@chakra-ui/react";
-import { Row, Col } from "react-grid-system";
 import TextHeader from "../component/text-heder-section";
 import Layouts from "../layouts";
 import CustomButton from "../component/custom-button";
@@ -32,7 +31,9 @@ const LihatSemuaBerita = ({ listData }) => {
         <TextHeader textLine text="BERITA" width="78px" />
         <Box py={20} w="100%">
           {data?.map((el, idx) => (
-            <CardAllBerita {...el} idx={idx} />
+            <Box key={el.id}>
+              <CardAllBerita {...el} idx={idx} />
+            </Box>
           ))}
         </Box>
         <Box>
