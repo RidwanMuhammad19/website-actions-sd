@@ -5,6 +5,7 @@ import Informasi from "../view/home/informasi";
 import Hero from "../view/home/hero";
 import Kurikulum from "../view/home/kurikulum";
 import Prestasi from "../view/home/prestasi";
+import Produk from "../view/home/produk";
 
 export async function getServerSideProps() {
   //BERITA
@@ -118,6 +119,7 @@ const Home = ({
       <Kurikulum data={listKurikulum?.data} />
       <Informasi data={listInformasi?.data} />
       <ELearning data={dataELearning?.data} />
+      <Produk />
       <Prestasi listPrestasi={listPrestasi} />
     </Layouts>
   );

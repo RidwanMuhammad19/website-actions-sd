@@ -26,8 +26,6 @@ import {
 export default function Navbar({ data }) {
   const { isOpen, onToggle } = useDisclosure();
 
-  console.log(data, "data here");
-
   return (
     <Box w="100%" bg="white" display="block" position="fixed" zIndex="12">
       <Container maxW="7xl">
@@ -279,34 +277,39 @@ const NAV_ITEMS = [
       {
         id: 1,
         label: "Visi dan Misi",
-        href: "#",
+        href: "/visi-misi",
       },
       {
         id: 2,
         label: "Sejarah",
         href: "#",
       },
-      {
-        id: 3,
-        label: "Extra dan Intrakulikuler",
-        href: "#",
-      },
     ],
   },
-
   {
     id: 3,
     label: "Program",
-    href: "/about",
+    children: [
+      {
+        id: 1,
+        label: "Extra dan Intrakulikuler",
+        href: "/ekstra-dan-intrakurikuler",
+      },
+      {
+        id: 2,
+        label: "Program Sekolah",
+        href: "/program-sekolah",
+      },
+    ],
   },
   {
     id: 4,
-    label: "Artikel",
-    href: "#",
+    label: "Berita",
+    href: "/#berita",
   },
   {
     id: 5,
     label: "Kontak",
-    href: "#",
+    href: "/#kontak",
   },
 ];

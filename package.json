@@ -12,6 +12,7 @@
     "@chakra-ui/react": "^1.7.2",
     "@emotion/react": "11",
     "@emotion/styled": "11",
+    "chakra-ui-steps": "https://github.com/usamahbass/chakra-ui-steps",
     "date-fns": "^2.27.0",
     "framer-motion": "4",
     "next": "12.0.4",
@@ -22,6 +23,7 @@
     "react-hook-form": "^7.20.4",
     "react-instagram-embed": "^3.0.0",
     "react-player": "^2.9.0",
+    "react-select": "^5.2.1",
     "use-debounce": "^7.0.1"
   },
   "devDependencies": {

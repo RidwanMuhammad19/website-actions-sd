@@ -6,9 +6,23 @@ import {
   Button,
   Image as ImageChakra,
 } from "@chakra-ui/react";
+import { Carousel } from "../../component/carousel";
+import { useRouter } from "next/router";
 
 const Hero = ({ data }) => {
-  console.log(data, "iki");
+  const router = useRouter()
+
+  const slides = [
+    {
+      img: `https://actions-api-sd.sandboxindonesia.id/storage/${data?.hero_image1}`,
+    },
+    {
+      img: `https://actions-api-sd.sandboxindonesia.id/storage/${data?.hero_image2}`,
+    },
+    {
+      img: `https://actions-api-sd.sandboxindonesia.id/storage/${data?.hero_image3}`,
+    }
+  ];
 
   return (
     <Box pt="24">
@@ -63,6 +77,7 @@ const Hero = ({ data }) => {
               _hover={{
                 bg: "primary.700",
               }}
+              onClick={() => router.push("/pendaftaran") }
             >
               DAFTAR SEKARANG
             </Button>
@@ -74,14 +89,12 @@ const Hero = ({ data }) => {
             position="relative"
           >
             <Box
-              width="409px"
-              height="283px"
-              borderRadius="1.875rem"
               border="10px solid white"
               bgSize="cover"
               bgRepeat="no-repeat"
-              bgImage={`url('https://actions-api-sd.sandboxindonesia.id/storage/${data?.hero_image1}')`}
-            />
+            >
+              <Carousel slides={slides} />
+            </Box>
             <Box
               display="flex"
               alignItems="center"

@@ -37,16 +37,16 @@ const Berita = ({ listKategoriBerita, listBerita }) => {
   // }, [debonceSearch]);
 
   return (
-    <Box as="section" px={{ xs: 5, md: 0 }}>
+    <Box as="section" px={{ xs: 5, md: 0 }} >
       {/* SUBSTRACT BACKGROUND */}
 
-      <Box>
+      <Box id="berita">
         <TextHeader textLine text="BERITA" width="78px" />
       </Box>
 
       {/* BERITA */}
 
-      <Box mt={{ xs: "5rem", md: "10rem" }} maxW="7xl" as={Container}>
+      <Box mt={20} maxW="7xl" as={Container}>
         <Box as={Row}>
           <Box sm={12} md={8} lg={8} as={Col}>
             {listBerita?.slice(0, 3).map((el, idx) => (

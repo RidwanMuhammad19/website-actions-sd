@@ -2,12 +2,14 @@ import React from "react";
 import { Container, Stack, Box, Text, Icon, Image } from "@chakra-ui/react";
 import TextHeader from "../../component/text-heder-section";
 import CustomButton from "../../component/custom-button";
+import { Carousel } from "../../component/carousel";
 
 const ELearning = ({ data }) => {
   const medias = data?.media;
 
   return (
     <Box height="100%" bg="#F6F8FD">
+      <Carousel />
       <Container maxW="7xl" py={{ xs: 10, md: 20 }} px={{ xs: 10, md: 0 }}>
         <TextHeader text="E-Learning" width="190px" />
         <Stack

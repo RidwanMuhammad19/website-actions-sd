@@ -24,7 +24,6 @@ const TextHeaderFooter = ({ text }) => {
 };
 
 const Footer = ({ data }) => {
-  console.log(data, "here is data");
 
   const IconSosmed = [
     {
@@ -84,7 +83,7 @@ const Footer = ({ data }) => {
     },
   ];
   return (
-    <Box bg="#292C37">
+    <Box bg="#292C37" id="kontak">
       <Container maxW="7xl">
         <Stack
           direction={{ xs: "column", md: "row" }}
