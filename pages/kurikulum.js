@@ -48,6 +48,7 @@ const Kurikulum = ({ dataKurikulum }) => {
               <Image
                 src={`https://actions-api-sd.sandboxindonesia.id/storage/${el?.gambar}`}
                 h="80px"
+                alt="gambar"
               />
             </Box>
             <Box flex={2} pl={5}>
