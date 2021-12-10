@@ -6,7 +6,7 @@ import CarouselSub from "../component/carousel-full";
 const ExtraIntra = () => {
   const slides = [
     {
-      img: "/assets/slider/ekstra/1.JPG",
+      img: "/assets/slider/ekstra/1.jpg",
     },
     {
       img: "/assets/slider/ekstra/2.jpg",

@@ -6,7 +6,7 @@ import Layouts from "../layouts";
 const ProgramSekolah = () => {
   const slides = [
     {
-      img: "/assets/slider/programsekolah/1.JPG",
+      img: "/assets/slider/programsekolah/1.jpg",
     },
     {
       img: "/assets/slider/programsekolah/2.jpg",
