@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Router from "next/router";
 import ThemeActions from "../theme";
 import LoadingGlobal from "../component/loading-global";
+import '../styles/_helper.css'
 
 function MyApp({ Component, pageProps }) {
   const [loading, setLoading] = useState(false);

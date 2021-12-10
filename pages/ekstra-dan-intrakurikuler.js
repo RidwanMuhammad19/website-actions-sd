@@ -1,17 +1,56 @@
 import React from "react";
-import {
-  Container,
-  Stack,
-  Box,
-  Text,
-  Heading,
-  OrderedList,
-  ListItem,
-} from "@chakra-ui/react";
+import { Container, Stack, Box, Text, Heading } from "@chakra-ui/react";
 import Layouts from "../layouts";
-import { el } from "date-fns/locale";
+import CarouselSub from "../component/carousel-full";
 
 const ExtraIntra = () => {
+  const slides = [
+    {
+      img: "/assets/slider/ekstra/1.JPG",
+    },
+    {
+      img: "/assets/slider/ekstra/2.jpg",
+    },
+    {
+      img: "/assets/slider/ekstra/3.jpg",
+    },
+    {
+      img: "/assets/slider/ekstra/4.jpg",
+    },
+    {
+      img: "/assets/slider/ekstra/5.jpg",
+    },
+    {
+      img: "/assets/slider/ekstra/6.JPG",
+    },
+    {
+      img: "/assets/slider/ekstra/7.jpg",
+    },
+    {
+      img: "/assets/slider/ekstra/8.jpg",
+    },
+    {
+      img: "/assets/slider/ekstra/9.jpg",
+    },
+    {
+      img: "/assets/slider/ekstra/10.jpg",
+    },
+    {
+      img: "/assets/slider/ekstra/11.JPG",
+    },
+    {
+      img: "/assets/slider/ekstra/12.jpg",
+    },
+    {
+      img: "/assets/slider/ekstra/13.jpg",
+    },
+    {
+      img: "/assets/slider/ekstra/14.jpg",
+    },
+    {
+      img: "/assets/slider/ekstra/15.jpg",
+    },
+  ];
   const data = [
     {
       no: "1.",
@@ -122,10 +161,16 @@ const ExtraIntra = () => {
     <Layouts>
       <Box py={20}>
         <Container maxW="7xl">
-          <Box textAlign="center" py={20}>
+          <Box textAlign="center" pt={10}>
             <Heading>EKSTRA DAN INTRAKURIKULER</Heading>
           </Box>
-          <Stack direction="row" justifyContent="center" lineHeight="35px">
+          <CarouselSub slides={slides} />
+          <Stack
+            direction="row"
+            justifyContent="center"
+            lineHeight="35px"
+            pt={10}
+          >
             <Box flex={1}>
               {data.slice(0, 13).map((el) => (
                 <Box key={el.no} display="flex" flexDir="row">

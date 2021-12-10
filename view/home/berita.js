@@ -37,7 +37,7 @@ const Berita = ({ listKategoriBerita, listBerita }) => {
   // }, [debonceSearch]);
 
   return (
-    <Box as="section" px={{ xs: 5, md: 0 }} >
+    <Box as="section" px={{ xs: 5, md: 0 }}>
       {/* SUBSTRACT BACKGROUND */}
 
       <Box id="berita">
@@ -143,7 +143,7 @@ const Berita = ({ listKategoriBerita, listBerita }) => {
                 </Stack>
                 <Box py={2}>
                   <TabPanels>
-                    {/* <TabPanel>
+                    <TabPanel>
                       <iframe
                         src="https://www.instagram.com/p/CWpWLz9v5CX/embed"
                         width="100%"
@@ -154,8 +154,8 @@ const Berita = ({ listKategoriBerita, listBerita }) => {
                         allowFullScreen={true}
                         allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
                       ></iframe>
-                    </TabPanel> */}
-                    {/* <TabPanel pl={2}>
+                    </TabPanel>
+                    <TabPanel pl={2}>
                       <iframe
                         src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fraksyedev&tabs=timeline&width=330&height=450&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
                         width="300"
@@ -165,14 +165,14 @@ const Berita = ({ listKategoriBerita, listBerita }) => {
                         allowFullScreen="true"
                         allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
                       ></iframe>
-                    </TabPanel> */}
-                    {/* <TabPanel>
+                    </TabPanel>
+                    <TabPanel>
                       <ReactPlayer
                         width="100%"
                         height="450"
                         url="https://www.youtube.com/watch?v=hfPrVBAT6Vc"
                       />
-                    </TabPanel> */}
+                    </TabPanel>
                   </TabPanels>
                 </Box>
               </Box>

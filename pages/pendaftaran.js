@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSteps, Steps, Step } from "chakra-ui-steps";
 import {
   Container,
@@ -13,10 +13,14 @@ import {
   Stack,
   Text,
   Button,
+  useToast,
 } from "@chakra-ui/react";
 import { useForm, Controller } from "react-hook-form";
 import Layouts from "../layouts";
 import Select from "react-select";
+import AsyncSelect from "react-select/async";
+import axios from "axios";
+import { useRouter } from "next/router";
 
 export async function getServerSideProps() {
   const requestTransportasi = await fetch(
@@ -46,33 +50,142 @@ export async function getServerSideProps() {
     }
   );
 
+  const requestPekerjaan = await fetch(
+    "https://actions-api-sd.sandboxindonesia.id/api/pekerjaan",
+    {
+      headers: {
+        Accept: "application/json",
+      },
+    }
+  );
+
+  const requestPenghasilan = await fetch(
+    "https://actions-api-sd.sandboxindonesia.id/api/penghasilan",
+    {
+      headers: {
+        Accept: "application/json",
+      },
+    }
+  );
+
   const listTransportasi = await requestTransportasi.json();
   const listStatusAnak = await requestStatusAnak.json();
   const listPendidikan = await requestPendidikan.json();
+  const listPekerjaan = await requestPekerjaan.json();
+  const listPenghasilan = await requestPenghasilan.json();
 
   return {
-    props: { listTransportasi, listStatusAnak },
+    props: {
+      listTransportasi,
+      listStatusAnak,
+      listPendidikan,
+      listPekerjaan,
+      listPenghasilan,
+    },
   };
 }
 
-const Pendaftaran = ({ listTransportasi, listStatusAnak }) => {
-  console.log(listStatusAnak?.data, "here ");
-
+const Pendaftaran = ({
+  listTransportasi,
+  listStatusAnak,
+  listPendidikan,
+  listPekerjaan,
+  listPenghasilan,
+}) => {
   const {
     register,
     control,
     handleSubmit,
     watch,
-    reset: resetForm,
     formState: { errors },
   } = useForm({ mode: "onChange" });
+  const toast = useToast();
+  const router = useRouter();
 
   const { nextStep, prevStep, activeStep, reset } = useSteps({
     initialStep: 0,
   });
 
-  const watchWaliMurid = watch("wali_murid", 1);
+  const onSubmit = (values) => {
+    toast({
+      title: "Terkirim",
+      description: `Pendaftaran Atas Nama ${values?.nama_lengkap} Berhasil Dikirim !`,
+      status: "success",
+      duration: 9000,
+      position: "top",
+      isClosable: true,
+    });
+    router.push("/");
+  };
 
+  const listProvinsi = async () => {
+    const response = await axios.get(
+      `https://actions-api-sd.sandboxindonesia.id/api/provinces/?search${watchProvinsi}`,
+      {
+        headers: {
+          Accept: "application/json",
+        },
+      }
+    );
+
+    return response.data.map((elem) => ({
+      label: elem.name,
+      value: elem.code,
+    }));
+  };
+
+  const listKabKota = async () => {
+    const response = await axios.get(
+      `https://actions-api-sd.sandboxindonesia.id/api/cities/?province_code=${watchProvinsi?.value}`,
+      {
+        headers: {
+          Accept: "application/json",
+        },
+      }
+    );
+
+    return response.data.map((elem) => ({
+      label: elem.name,
+      value: elem.code,
+    }));
+  };
+
+  const listKecamatan = async () => {
+    const response = await axios.get(
+      `https://actions-api-sd.sandboxindonesia.id/api/districts/?city_code=${watchKabKota?.value}`,
+      {
+        headers: {
+          Accept: "application/json",
+        },
+      }
+    );
+
+    return response.data.map((elem) => ({
+      label: elem.name,
+      value: elem.code,
+    }));
+  };
+
+  const listDesa = async () => {
+    const response = await axios.get(
+      `https://actions-api-sd.sandboxindonesia.id/api/villages/?district_code=${watchKecamatan?.value}`,
+      {
+        headers: {
+          Accept: "application/json",
+        },
+      }
+    );
+
+    return response.data.map((elem) => ({
+      label: elem.name,
+      value: elem.code,
+    }));
+  };
+
+  const watchWaliMurid = watch("wali_murid", 1);
+  const watchProvinsi = watch("provinsi", null);
+  const watchKabKota = watch("kabkota", null);
+  const watchKecamatan = watch("kecamatan", null);
 
   const jenisWali = [
     {
@@ -82,38 +195,6 @@ const Pendaftaran = ({ listTransportasi, listStatusAnak }) => {
     {
       value: 2,
       label: "Wali",
-    },
-  ];
-
-
-
-  const pekerjaan = [
-    {
-      id: 1,
-      label: "Tidak Bekerja",
-    },
-    {
-      id: 2,
-      label: "Wiraswasta",
-    },
-  ];
-
-  const penghasilan = [
-    {
-      id: 1,
-      label: "Kurang dari Rp. 500,000",
-    },
-    {
-      id: 2,
-      label: "Rp. 500,000 - Rp. 1000,000",
-    },
-    {
-      id: 3,
-      label: "Rp. 1000,000 - Rp. 1500,000",
-    },
-    {
-      id: 4,
-      label: "Rp. 1500,000 - Rp. 2000,000",
     },
   ];
 
@@ -401,10 +482,9 @@ const Pendaftaran = ({ listTransportasi, listStatusAnak }) => {
                             <Select
                               onChange={(val) => onChange(val)}
                               value={value}
-                              defaultValue={pekerjaan[0]}
-                              options={pekerjaan.map((el) => ({
-                                label: el.label,
-                                value: el.value,
+                              options={listPekerjaan?.data?.map((el) => ({
+                                label: el.nama_pekerjaan,
+                                value: el.id,
                               }))}
                             />
                           )}
@@ -430,10 +510,9 @@ const Pendaftaran = ({ listTransportasi, listStatusAnak }) => {
                             <Select
                               onChange={(val) => onChange(val)}
                               value={value}
-                              defaultValue={penghasilan[0]}
-                              options={penghasilan.map((el) => ({
-                                label: el.label,
-                                value: el.value,
+                              options={listPenghasilan?.data?.map((el) => ({
+                                label: el.penghasilan,
+                                value: el.id,
                               }))}
                             />
                           )}
@@ -513,10 +592,9 @@ const Pendaftaran = ({ listTransportasi, listStatusAnak }) => {
                             <Select
                               onChange={(val) => onChange(val)}
                               value={value}
-                              defaultValue={pendidikan[0]}
-                              options={pendidikan.map((el) => ({
-                                label: el.label,
-                                value: el.value,
+                              options={listPendidikan?.data?.map((el) => ({
+                                label: el.nama_pendidikan,
+                                value: el.id,
                               }))}
                             />
                           )}
@@ -542,10 +620,9 @@ const Pendaftaran = ({ listTransportasi, listStatusAnak }) => {
                             <Select
                               onChange={(val) => onChange(val)}
                               value={value}
-                              defaultValue={pekerjaan[0]}
-                              options={pekerjaan.map((el) => ({
-                                label: el.label,
-                                value: el.value,
+                              options={listPekerjaan?.data?.map((el) => ({
+                                label: el.nama_pekerjaan,
+                                value: el.id,
                               }))}
                             />
                           )}
@@ -571,10 +648,9 @@ const Pendaftaran = ({ listTransportasi, listStatusAnak }) => {
                             <Select
                               onChange={(val) => onChange(val)}
                               value={value}
-                              defaultValue={penghasilan[0]}
-                              options={penghasilan.map((el) => ({
-                                label: el.label,
-                                value: el.value,
+                              options={listPenghasilan?.data?.map((el) => ({
+                                label: el.penghasilan,
+                                value: el.id,
                               }))}
                             />
                           )}
@@ -659,10 +735,9 @@ const Pendaftaran = ({ listTransportasi, listStatusAnak }) => {
                             <Select
                               onChange={(val) => onChange(val)}
                               value={value}
-                              defaultValue={pendidikan[0]}
-                              options={pendidikan.map((el) => ({
-                                label: el.label,
-                                value: el.value,
+                              options={listPendidikan?.data?.map((el) => ({
+                                label: el.nama_pendidikan,
+                                value: el.id,
                               }))}
                             />
                           )}
@@ -688,10 +763,9 @@ const Pendaftaran = ({ listTransportasi, listStatusAnak }) => {
                             <Select
                               onChange={(val) => onChange(val)}
                               value={value}
-                              defaultValue={pekerjaan[0]}
-                              options={pekerjaan.map((el) => ({
-                                label: el.label,
-                                value: el.value,
+                              options={listPekerjaan?.data?.map((el) => ({
+                                label: el.nama_pekerjaan,
+                                value: el.id,
                               }))}
                             />
                           )}
@@ -715,10 +789,9 @@ const Pendaftaran = ({ listTransportasi, listStatusAnak }) => {
                             <Select
                               onChange={(val) => onChange(val)}
                               value={value}
-                              defaultValue={penghasilan[0]}
-                              options={penghasilan.map((el) => ({
-                                label: el.label,
-                                value: el.value,
+                              options={listPenghasilan?.data?.map((el) => ({
+                                label: el.penghasilan,
+                                value: el.id,
                               }))}
                             />
                           )}
@@ -736,8 +809,8 @@ const Pendaftaran = ({ listTransportasi, listStatusAnak }) => {
 
               <Box pt={4} display="flex" justifyContent="space-between">
                 <Button
-                  bg="primary.600"
-                  _hover={{ bg: "primary.700" }}
+                  bg="success.500"
+                  _hover={{ bg: "success.600" }}
                   color="white"
                   fontWeight="100"
                   fontSize="18px"
@@ -756,6 +829,149 @@ const Pendaftaran = ({ listTransportasi, listStatusAnak }) => {
                   onClick={nextStep}
                 >
                   Selanjutnya
+                </Button>
+              </Box>
+            </Step>
+            <Step key="step_3">
+              <FormControl isInvalid={errors?.provinsi} mb={4} w="50%">
+                <FormLabel>Provinsi</FormLabel>
+                <Controller
+                  name="provinsi"
+                  control={control}
+                  defaultValue=""
+                  rules={{ required: true }}
+                  render={({ field: { onChange, value } }) => (
+                    <AsyncSelect
+                      value={value}
+                      cacheOptions
+                      defaultOptions
+                      loadOptions={listProvinsi}
+                      onChange={(val) => onChange(val)}
+                    />
+                  )}
+                />
+                {errors?.provinsi && (
+                  <FormErrorMessage>Masukan provinsi</FormErrorMessage>
+                )}
+              </FormControl>
+              {watchProvinsi && (
+                <FormControl isInvalid={errors?.kabkota} mb={4} w="50%">
+                  <FormLabel>Kabupaten</FormLabel>
+                  <Controller
+                    name="kabkota"
+                    control={control}
+                    defaultValue=""
+                    rules={{ required: true }}
+                    render={({ field: { onChange, value } }) => (
+                      <AsyncSelect
+                        value={value}
+                        cacheOptions
+                        defaultOptions
+                        loadOptions={listKabKota}
+                        onChange={(val) => onChange(val)}
+                      />
+                    )}
+                  />
+                  {errors?.kabkota && (
+                    <FormErrorMessage>Masukan kabupaten</FormErrorMessage>
+                  )}
+                </FormControl>
+              )}
+              {watchKabKota && (
+                <FormControl isInvalid={errors?.kecamatan} mb={4} w="50%">
+                  <FormLabel>Kecamatan</FormLabel>
+                  <Controller
+                    name="kecamatan"
+                    control={control}
+                    defaultValue=""
+                    rules={{ required: true }}
+                    render={({ field: { onChange, value } }) => (
+                      <AsyncSelect
+                        value={value}
+                        cacheOptions
+                        defaultOptions
+                        loadOptions={listKecamatan}
+                        onChange={(val) => onChange(val)}
+                      />
+                    )}
+                  />
+                  {errors?.kecamatan && (
+                    <FormErrorMessage>Masukan kecamatan</FormErrorMessage>
+                  )}
+                </FormControl>
+              )}
+              {watchKecamatan && (
+                <FormControl isInvalid={errors?.desa} mb={4} w="50%">
+                  <FormLabel>Desa</FormLabel>
+                  <Controller
+                    name="desa"
+                    control={control}
+                    defaultValue=""
+                    rules={{ required: true }}
+                    render={({ field: { onChange, value } }) => (
+                      <AsyncSelect
+                        value={value}
+                        cacheOptions
+                        defaultOptions
+                        loadOptions={listDesa}
+                        onChange={(val) => onChange(val)}
+                      />
+                    )}
+                  />
+                  {errors?.desa && (
+                    <FormErrorMessage>Masukan desa</FormErrorMessage>
+                  )}
+                </FormControl>
+              )}
+              <FormControl isInvalid={errors?.alamat_domisili} mb={4}>
+                <FormLabel>Alamat Domisili</FormLabel>
+                <Input {...register("alamat_domisili", { required: true })} />
+                {errors?.alamat_domisili && (
+                  <FormErrorMessage>Masukan alamat domisili</FormErrorMessage>
+                )}
+              </FormControl>
+              <FormControl isInvalid={errors?.jarakke_sekolah} mb={4}>
+                <FormLabel>Jarak ke Sekolah</FormLabel>
+                <Input
+                  type="number"
+                  {...register("jarakke_sekolah", { required: true })}
+                />
+                {errors?.jarakke_sekolah && (
+                  <FormErrorMessage>Masukan jarak kesekolah</FormErrorMessage>
+                )}
+              </FormControl>
+              <FormControl isInvalid={errors?.waktu_tempuh} mb={4}>
+                <FormLabel>Waktu Tempuh (jam:menit)</FormLabel>
+                <Input
+                  type="number"
+                  {...register("waktu_tempuh", { required: true })}
+                />
+                {errors?.waktu_tempuh && (
+                  <FormErrorMessage>Masukan jarak kesekolah</FormErrorMessage>
+                )}
+              </FormControl>
+              <Box pt={4} display="flex" justifyContent="space-between">
+                <Button
+                  bg="success.500"
+                  _hover={{ bg: "success.600" }}
+                  color="white"
+                  fontWeight="100"
+                  fontSize="18px"
+                  px={4}
+                  onClick={prevStep}
+                >
+                  Sebelumnya
+                </Button>
+                <Button
+                  bg="primary.600"
+                  _hover={{ bg: "primary.700" }}
+                  color="white"
+                  fontWeight="100"
+                  fontSize="18px"
+                  px={4}
+                  onClick={handleSubmit(onSubmit)}
+                >
+                  Kirim
                 </Button>
               </Box>
             </Step>

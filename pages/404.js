@@ -25,7 +25,7 @@ const Custom404 = () => {
         borderRadius="30px"
         boxShadow="2xl"
         _hover={{ bg: "primary.700" }}
-        onClick={() => router.back()}
+        onClick={() => router.push("/")}
       >
         Kembali ke Halaman Sebelumnya
       </Button>

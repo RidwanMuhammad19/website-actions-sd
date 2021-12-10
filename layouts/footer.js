@@ -10,6 +10,7 @@ import {
 import InstagramIcon from "../icons/instagram";
 import FacebookIcon from "../icons/facebook";
 import YoutubeIcon from "../icons/youtube";
+import { useRouter } from "next/router";
 
 const TextHeaderFooter = ({ text }) => {
   return (
@@ -24,7 +25,7 @@ const TextHeaderFooter = ({ text }) => {
 };
 
 const Footer = ({ data }) => {
-
+  const router = useRouter();
   const IconSosmed = [
     {
       id: 1,
@@ -49,37 +50,63 @@ const Footer = ({ data }) => {
     {
       id: 1,
       list: "Visi Misi",
+      href: "/visi-misi",
     },
     {
       id: 2,
-      list: "Sejarah",
+      list: "Tentang Kami",
+      href: "/tentang-kami",
+    },
+    // {
+    //   id: 2,
+    //   list: "Sejarah",
+    //   href: "/sejarah",
+    // },
+  ];
+
+  const listProgram = [
+    {
+      id: 1,
+      list: "Ekstra & Intra Kurikuler",
+      href: "/ekstra-dan-intrakurikuler",
     },
     {
-      id: 3,
-      list: "Ekstra & Intra Kurikuler",
+      id: 2,
+      list: "Program Sekolah",
+      href: "/program-sekolah",
     },
   ];
 
   const listMenu = [
     {
       id: 1,
-      list: "Beranda",
+      list: "Berita",
+      href: "/#berita",
     },
     {
       id: 2,
-      list: "Profil",
+      list: "Kurikulum",
+      href: "/#kurikulum",
     },
     {
       id: 3,
-      list: "Program",
+      list: "Informasi",
+      href: "/#informasi",
     },
     {
       id: 4,
-      list: "Artikel",
+      list: "E-Learning",
+      href: "/#elearning",
     },
     {
       id: 5,
-      list: "Kontak Kami",
+      list: "Produk",
+      href: "/#produk",
+    },
+    {
+      id: 6,
+      list: "Prestasi",
+      href: "/#prestasi",
     },
   ];
   return (
@@ -96,19 +123,21 @@ const Footer = ({ data }) => {
             <Box pb={{ xs: 10, md: 16 }}>
               <TextHeaderFooter text="Alamat" />
               <Text color="white" lineHeight="2.188rem">
-                {data?.alamat}
+                Alamat JL. Kopral Sudibyo, RT. 1 RW. XI, Perak
+                Gunungan,Barenglor, Gunungan, Bareng Lor, Kec. Klaten Utara,
+                Kabupaten Klaten, Jawa Tengah 57438
               </Text>
             </Box>
             <Box pb={{ xs: 10, md: 16 }}>
               <TextHeaderFooter text="Email" />
               <Text color="white" lineHeight="2.188rem">
-                {data?.email}
+                sdmuhammadiyahklatenutara @gmail.com
               </Text>
             </Box>
             <Box pb={{ xs: 10, md: 16 }}>
               <TextHeaderFooter text="Telphone" />
               <Text color="white" lineHeight="2.188rem">
-                {data?.telepon}
+                (0272) 326984
               </Text>
             </Box>
             <Stack
@@ -132,15 +161,45 @@ const Footer = ({ data }) => {
             <Box flex={1}>
               <TextHeaderFooter text="Profil Sekolah" />
               {listProfil?.map((item) => (
-                <Text key={item.id} color="white" lineHeight="3.125rem">
+                <Text
+                  key={item.id}
+                  color="white"
+                  lineHeight="3.125rem"
+                  onClick={() => router.push(`${item.href}`)}
+                  cursor={"pointer"}
+                  _hover={{ color: "info.500" }}
+                >
                   {item.list}
                 </Text>
               ))}
+
+              <Box mt={16}>
+                <TextHeaderFooter text="Program" />
+                {listProgram?.map((item) => (
+                  <Text
+                    key={item.id}
+                    color="white"
+                    lineHeight="3.125rem"
+                    onClick={() => router.push(`${item.href}`)}
+                    cursor={"pointer"}
+                    _hover={{ color: "info.500" }}
+                  >
+                    {item.list}
+                  </Text>
+                ))}
+              </Box>
             </Box>
             <Box flex={0.5}>
               <TextHeaderFooter text="Menu" />
               {listMenu.map((item) => (
-                <Text key={item.id} color="white" lineHeight="3.125rem">
+                <Text
+                  key={item.id}
+                  color="white"
+                  lineHeight="3.125rem"
+                  onClick={() => router.push(`${item.href}`)}
+                  cursor={"pointer"}
+                  _hover={{ color: "info.500" }}
+                >
                   {item.list}
                 </Text>
               ))}
@@ -164,7 +223,7 @@ const Footer = ({ data }) => {
         <Divider />
         <Box display="flex" justifyContent="center" py={5}>
           <Text color="white" fontSize="1rem">
-            &copy; {` ${data?.nama_sekolah}`}
+            &copy; © SD Muhammadiyah Klaten Utara
           </Text>
         </Box>
       </Container>

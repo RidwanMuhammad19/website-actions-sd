@@ -5,12 +5,15 @@ import {
   Text,
   Button,
   Image as ImageChakra,
+  StackDivider,
 } from "@chakra-ui/react";
 import { Carousel } from "../../component/carousel";
 import { useRouter } from "next/router";
+import "@fontsource/lobster/400.css";
+import "@fontsource/comic-neue/400.css";
 
 const Hero = ({ data }) => {
-  const router = useRouter()
+  const router = useRouter();
 
   const slides = [
     {
@@ -21,11 +24,11 @@ const Hero = ({ data }) => {
     },
     {
       img: `https://actions-api-sd.sandboxindonesia.id/storage/${data?.hero_image3}`,
-    }
+    },
   ];
 
   return (
-    <Box pt="24">
+    <Box py="24">
       <Stack flexDirection="row">
         <Box
           zIndex="-1"
@@ -47,25 +50,32 @@ const Hero = ({ data }) => {
         />
       </Stack>
       <Container maxW="7xl">
-        <Stack height="calc(100vh - 80px)" direction="row">
-          <Box
+        <Stack height="80vh" direction="row" alignItems={"center"} pb={10}>
+          <Stack
             flex={1}
-            display="flex"
-            flexDir="column"
-            mt="80px"
+            direction="column"
             alignItems={{ xs: "center", md: "flex-start" }}
+            spacing={"60px"}
           >
             <Text
               textAlign={{ xs: "center", md: "left" }}
-              fontSize={{ xs: "30px", md: "55px" }}
-              fontWeight="600"
-              lineHeight={{ xs: "45px", md: "75px" }}
+              fontSize={{ xs: "30px", md: "54px" }}
+              fontWeight="400"
+              lineHeight={{ xs: "45px", md: "60px" }}
               color="primary.600"
+              fontFamily={"Lobster"}
+              w="80%"
             >
               {data?.nama_sekolah}
             </Text>
+            <Text
+              fontFamily={"Comic Neue"}
+              fontSize={"24px"}
+              color="primary.600"
+            >
+              Cerdas, Kreatif dan Berakhlak mulia
+            </Text>
             <Button
-              mt="100px"
               color="white"
               bg="primary.600"
               width="269px"
@@ -77,52 +87,18 @@ const Hero = ({ data }) => {
               _hover={{
                 bg: "primary.700",
               }}
-              onClick={() => router.push("/pendaftaran") }
+              onClick={() => router.push("/pendaftaran")}
             >
               DAFTAR SEKARANG
             </Button>
-          </Box>
+          </Stack>
           <Box
             flex={1}
             display={{ base: "none", md: "flex" }}
             justifyContent="center"
-            position="relative"
           >
-            <Box
-              border="10px solid white"
-              bgSize="cover"
-              bgRepeat="no-repeat"
-            >
+            <Box bgSize="cover" bgRepeat="no-repeat">
               <Carousel slides={slides} />
-            </Box>
-            <Box
-              display="flex"
-              alignItems="center"
-              top="120px"
-              position="absolute"
-            >
-              <Box
-                w="346px"
-                h="224px"
-                mr={8}
-                borderRadius="1.875rem"
-                border="10px solid white"
-                bgSize="cover"
-                bgRepeat="no-repeat"
-                bgImage={`url('https://actions-api-sd.sandboxindonesia.id/storage/${data?.hero_image2}')`}
-              />
-
-              <Box
-                right="3%"
-                w="279px"
-                h="355px"
-                bg="warning.500"
-                borderRadius="1.875rem"
-                border="10px solid white"
-                bgSize="cover"
-                bgRepeat="no-repeat"
-                bgImage={`url('https://actions-api-sd.sandboxindonesia.id/storage/${data?.hero_image3}')`}
-              />
             </Box>
           </Box>
         </Stack>

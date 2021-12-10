@@ -61,10 +61,10 @@ export default function Navbar({ data }) {
             <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
               <Link href="/" _focus={{ borderRadius: "none" }}>
                 <Image
-                  src={`https://actions-api-sd.sandboxindonesia.id/storage/${data?.logo}`}
+                  // src={`https://actions-api-sd.sandboxindonesia.id/storage/${data?.logo}`}
+                  src="/assets/logo-sd.png"
                   alt="logo"
-                  width="253px"
-                  height="60px"
+                  height={{xs:"46px",md:"58px"}}
                 />
               </Link>
             </Flex>
@@ -116,12 +116,7 @@ const DesktopNav = () => {
       {NAV_ITEMS.map((navItem) => (
         <Box key={navItem.id}>
           <Popover id={navItem.id} trigger={"hover"} placement={"bottom-start"}>
-            <Box
-              display="flex"
-              flexDir="column"
-              alignItems="center"
-              _hover={{ h: "4px", bg: "yellow", boxShadow: "none" }}
-            >
+            <Box display="flex" flexDir="column" alignItems="center">
               <PopoverTrigger>
                 <Link
                   p={2}
@@ -129,8 +124,8 @@ const DesktopNav = () => {
                   fontSize={"sm"}
                   fontWeight={500}
                   color="primary.600"
-                  _focus={{ boxShadow: "none" }}
-                  _hover={{ textDecor: "none" }}
+                  _focus={{ boxShadow: "none", color: "info.500" }}
+                  _hover={{ textDecor: "none", color: "info.500" }}
                 >
                   {navItem.label}
                 </Link>
@@ -279,10 +274,15 @@ const NAV_ITEMS = [
         label: "Visi dan Misi",
         href: "/visi-misi",
       },
+      // {
+      //   id: 2,
+      //   label: "Sejarah",
+      //   href: "#",
+      // },
       {
         id: 2,
-        label: "Sejarah",
-        href: "#",
+        label: "Tentang Kami",
+        href: "/tentang-kami",
       },
     ],
   },
@@ -304,11 +304,16 @@ const NAV_ITEMS = [
   },
   {
     id: 4,
+    label: "Prestasi",
+    href: "/#prestasi",
+  },
+  {
+    id: 5,
     label: "Berita",
     href: "/#berita",
   },
   {
-    id: 5,
+    id: 6,
     label: "Kontak",
     href: "/#kontak",
   },

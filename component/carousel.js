@@ -1,7 +1,26 @@
 import React, { useState, useEffect } from "react";
-import { Flex, Box, Image } from "@chakra-ui/react";
+import { Flex, Box, Image, Text } from "@chakra-ui/react";
 
 export const Carousel = ({ slides }) => {
+  const arrowStyles = {
+    cursor: "pointer",
+    pos: "absolute",
+    top: "50%",
+    w: "auto",
+    mt: "-22px",
+    p: "16px",
+    color: "white",
+    fontWeight: "bold",
+    fontSize: "18px",
+    transition: "0.6s ease",
+    borderRadius: "0 3px 3px 0",
+    userSelect: "none",
+    _hover: {
+      opacity: 0.8,
+      bg: "black",
+    },
+  };
+
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const slidesCount = slides?.length;
@@ -29,19 +48,33 @@ export const Carousel = ({ slides }) => {
 
   return (
     <Flex
-      width="400px"
-      height="283px"
+      width="627px"
+      height="393px"
       alignItems="center"
       justifyContent="center"
+      boxShadow={"md"}
+      borderRadius="1.575rem"
     >
-      <Flex overflow="hidden" borderRadius="1.575rem">
-        <Flex pos="relative" width="full" height="283px" {...carouselStyle}>
+      <Flex
+        overflow="hidden"
+        pos="relative"
+        borderRadius="1.575rem"
+        borderWidth={"1px"}
+        borderColor={"primary.600"}
+      >
+        <Flex h="400px" w="full" height="393px" {...carouselStyle}>
           {slides?.map((slide, sid) => (
-            <Box key={`slide-${sid}`} flex="none" boxSize="full" shadow="md">
+            <Box key={`slide-${sid}`} boxSize="full" shadow="md" flex="none">
               <Image src={slide.img} boxSize="full" backgroundSize="cover" />
             </Box>
           ))}
         </Flex>
+        <Text {...arrowStyles} left="0" onClick={prevSlide}>
+          &#10094;
+        </Text>
+        <Text {...arrowStyles} right="0" onClick={nextSlide}>
+          &#10095;
+        </Text>
       </Flex>
     </Flex>
   );

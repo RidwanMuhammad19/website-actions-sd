@@ -21,7 +21,7 @@ const Produk = () => {
     },
   ];
   return (
-    <Box bg="primary.100" boxShadow="md">
+    <Box bg="primary.100" boxShadow="md" id="produk">
       <Container maxW="7xl" py={20}>
         <TextHeader text="PRODUK" />
         <Stack
@@ -32,7 +32,11 @@ const Produk = () => {
         >
           {produkImage?.map((el) => (
             <Box key={el.image}>
-              <Image h="70px" src={el.image} alt="gambarprestasi" />
+              <Image
+                h={{ xs: "40px", md: "70px" }}
+                src={el.image}
+                alt="gambarprestasi"
+              />
             </Box>
           ))}
         </Stack>

@@ -17,7 +17,7 @@ import CustomButton from "../../component/custom-button";
 
 const Informasi = ({ data }) => {
   return (
-    <Box>
+    <Box id="informasi">
       <Container
         maxW="7xl"
         height="100%"
@@ -143,7 +143,7 @@ const Informasi = ({ data }) => {
         </Stack>
         <CustomButton
           text="DAFTAR SEKARANG"
-          href="#"
+          href="/pendaftaran"
           color="white"
           bg="primary.400"
           hoverBg="primary.500"

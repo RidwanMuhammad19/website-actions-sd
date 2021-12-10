@@ -8,8 +8,7 @@ const ELearning = ({ data }) => {
   const medias = data?.media;
 
   return (
-    <Box height="100%" bg="#F6F8FD">
-      <Carousel />
+    <Box height="100%" bg="#F6F8FD" id="elearning">
       <Container maxW="7xl" py={{ xs: 10, md: 20 }} px={{ xs: 10, md: 0 }}>
         <TextHeader text="E-Learning" width="190px" />
         <Stack

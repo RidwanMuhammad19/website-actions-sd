@@ -1,0 +1,41 @@
+input:disabled {
+  background-color: #e0e0e0;
+}
+
+.css-u4p24i {
+  display: none !important;
+}
+
+.css-17q9n0m {
+  /* fix chakra ui steps border */
+  border: none;
+  padding-left: 0 !important;
+}
+
+.css-cjnllc {
+  /* fix chakra ui steps border top */
+  display: none !important;
+}
+
+.css-14a8jm1 {
+  /* fix chakra ui steps activeCount */
+  display: none !important;
+}
+
+.signature-input {
+  border: 1px solid #f3f5f8;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.border {
+  border: 1px solid #e0e0e0 !important;
+}
+
+.react-datepicker-wrapper {
+  width: auto !important;
+}
+
+.pac-container {
+  z-index: 1200000000000000000000000000000000 !important;
+}
