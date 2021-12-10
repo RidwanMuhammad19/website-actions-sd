@@ -223,7 +223,7 @@ const Footer = ({ data }) => {
         <Divider />
         <Box display="flex" justifyContent="center" py={5}>
           <Text color="white" fontSize="1rem">
-            &copy; © SD Muhammadiyah Klaten Utara
+            &copy; SD Muhammadiyah Klaten Utara
           </Text>
         </Box>
       </Container>

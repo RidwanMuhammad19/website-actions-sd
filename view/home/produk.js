@@ -5,7 +5,7 @@ import TextHeader from "../../component/text-heder-section";
 const Produk = () => {
   const produkImage = [
     {
-      image: "/assets/produk/mentari.png",
+      image: "/assets/produk/Mentari.png",
     },
     {
       image: "/assets/produk/fullday.png",
