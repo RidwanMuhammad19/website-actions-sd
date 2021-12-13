@@ -51,7 +51,6 @@ function MyApp({ Component, pageProps }) {
       <Head>
         <title>SD MUHAMMADIYAH KLATEN UTARA</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <p>Cerdas, Kreatif dan Berakhlak mulia</p>
       </Head>
       {loading ? <LoadingGlobal /> : <Component {...pageProps} />}
     </ThemeActions>
