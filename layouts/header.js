@@ -283,8 +283,8 @@ const NAV_ITEMS = [
       // },
       {
         id: 2,
-        label: "Tentang Kami",
-        href: "/tentang-kami",
+        label: "Sambutan Kepala Sekolah",
+        href: "/sambutan-kepsek",
       },
     ],
   },

@@ -4,10 +4,10 @@ import Layouts from "../layouts";
 import CarouselSub from "../component/carousel-full";
 import ButtonBack from "../component/button-back";
 
-const TentangKami = () => {
+const SambutanKepsek = () => {
   const slides = [
     {
-      img: "/assets/slider/tentangkami/1.jpg",
+      img: "/assets/slider/tentangkami/1.jpeg",
     },
     {
       img: "/assets/slider/tentangkami/2.jpg",
@@ -33,21 +33,24 @@ const TentangKami = () => {
       <Box py={20}>
         <Container maxW="7xl">
           <Box textAlign="center" py={10}>
-            <Heading>TENTANG KAMI</Heading>
+            <Heading>SAMBUTAN KEPALA SEKOLAH</Heading>
           </Box>
           <CarouselSub slides={slides} />
           <Box py={10}>
+            <Text fontSize={"18px"} color="secondary.600">
+              Assalamu’alaikum
+            </Text>
             <Text fontSize={"18px"} color="secondary.600" textAlign={"justify"}>
-              Dengan adanya website ini, kami bertujuan memberikan informasi
-              tentang sd muhamadiyah klaten utara dalam rangka agar masyarakat
-              dan dari berbagai pihak dapat lebih mudah menemukan berbagai
-              informasi terkait sd muhammadiyah klaten utara. Selain itu,
-              khususnya juga kepada para wali murid dan siswa-siswi sd
-              muhammadiyah klaten utara dapat lebih mudah dalam menjangkau
-              informasi melalui website ini , sehingga pelayanan kami kepada
-              wali murid, siswa-siswi sd muhammadiyah klaten utara dan
-              masyarakat lebih efisien dalam menemukan segala informasi melalui
-              website ini
+              Puji syukur Kami dari sd muhammadiyah klaten utara Menyampaikan
+              rasa syukur kami kepada Allah swt, karena sampai pada saat ini SD
+              Muhammadiyah Klaten utara menjadi sekolah yang sangat di percayai
+              oleh masyarakat khususnya di kabupaten klaten dan sekitarnya dan
+              tak lupa kami sampaikan kepada berbagai pihak yang tidak bisa kami
+              sebutkan satu persatu ,yang telah mendukung dan mensupport segala
+              hal yang berkaitan dengan sd muhammadiyah klaten utara. semoga
+              dengan adanya website ini, dapat memudahkan berbagai pihak untuk
+              menemukan informasi tentang sekolah sd muhammadiyah klaten utara.
+              Terima kasih
             </Text>
           </Box>
           <ButtonBack />
@@ -57,4 +60,4 @@ const TentangKami = () => {
   );
 };
 
-export default TentangKami;
+export default SambutanKepsek;
