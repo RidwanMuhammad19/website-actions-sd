@@ -41,15 +41,15 @@ const SambutanKepsek = () => {
               Assalamu’alaikum
             </Text>
             <Text fontSize={"18px"} color="secondary.600" textAlign={"justify"}>
-              Puji syukur Kami dari sd muhammadiyah klaten utara Menyampaikan
+              Puji syukur Kami dari SD Muhammadiyah Klaten Utara Menyampaikan
               rasa syukur kami kepada Allah swt, karena sampai pada saat ini SD
               Muhammadiyah Klaten utara menjadi sekolah yang sangat di percayai
               oleh masyarakat khususnya di kabupaten klaten dan sekitarnya dan
               tak lupa kami sampaikan kepada berbagai pihak yang tidak bisa kami
               sebutkan satu persatu ,yang telah mendukung dan mensupport segala
-              hal yang berkaitan dengan sd muhammadiyah klaten utara. semoga
+              hal yang berkaitan dengan SD Muhammadiyah Klaten Utara. semoga
               dengan adanya website ini, dapat memudahkan berbagai pihak untuk
-              menemukan informasi tentang sekolah sd muhammadiyah klaten utara.
+              menemukan informasi tentang sekolah SD Muhammadiyah Klaten Utara.
               Terima kasih
             </Text>
           </Box>

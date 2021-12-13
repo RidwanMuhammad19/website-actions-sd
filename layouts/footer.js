@@ -135,7 +135,7 @@ const Footer = ({ data }) => {
               </Text>
             </Box>
             <Box pb={{ xs: 10, md: 16 }}>
-              <TextHeaderFooter text="Telphone" />
+              <TextHeaderFooter text="Telephone" />
               <Text color="white" lineHeight="2.188rem">
                 (0272) 326984
               </Text>

@@ -54,11 +54,11 @@ const ExtraIntra = () => {
   const data = [
     {
       no: "1.",
-      item: "HW",
+      item: "Hizbul Wathan",
     },
     {
       no: "2.",
-      item: "TS",
+      item: "Tapak Suci",
     },
     {
       no: "3.",

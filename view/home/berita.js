@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   Box,
   Container,
@@ -13,28 +13,66 @@ import {
   TabPanels,
   Tab,
   TabPanel,
+  useToast,
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/router";
 import { Search2Icon } from "@chakra-ui/icons";
 import { Row, Col } from "react-grid-system";
 import { useDebounce } from "use-debounce";
 import CustomButton from "../../component/custom-button";
 import CardBerita from "../../view/berita/card-berita";
 import TextHeader from "../../component/text-heder-section";
-import { useRouter } from "next/router";
+import axios from "axios";
 import ReactPlayer from "react-player";
 
 const Berita = ({ listKategoriBerita, listBerita }) => {
   const { register, watch } = useForm();
+  const [data, setData] = useState(null);
+  const toast = useToast();
+  const [dataSearch, setDataSearch] = useState("");
+  const router = useRouter();
   const watchSearch = watch("search", null);
+  const [idKategori, setIdKategori] = useState(null);
   const [debonceSearch] = useDebounce(watchSearch, 1000);
 
-  // const router = useRouter();
-  // useEffect(() => {
-  //   router.push(`?search=${debonceSearch}`, "", {
-  //     scroll: false,
-  //   });
-  // }, [debonceSearch]);
+  useEffect(() => {
+    if (typeof idKategori === "number") {
+      axios({
+        method: "get",
+        url: `https://actions-api-sd.sandboxindonesia.id/api/kategori-berita/${idKategori}`,
+        headers: {
+          Accept: "application/json",
+        },
+      }).then((res) => setData(res.data.data.berita));
+    }
+  }, [idKategori]);
+
+  useEffect(() => {
+    if (debonceSearch) {
+      setIdKategori(null);
+      axios({
+        method: "get",
+        url: `https://actions-api-sd.sandboxindonesia.id/api/berita/?search=${debonceSearch}`,
+        headers: {
+          Accept: "application/json",
+        },
+      })
+        .then((res) => setDataSearch(res.data.data))
+        .catch((err) =>
+          toast({
+            description: `Data tidak di temukan !`,
+            status: "warning",
+            duration: 9000,
+            position: "top",
+            isClosable: true,
+          })
+        );
+    }
+  }, [debonceSearch]);
+
+  const dataBerita =
+    idKategori !== null ? data : debonceSearch ? dataSearch : listBerita;
 
   return (
     <Box as="section" px={{ xs: 5, md: 0 }}>
@@ -49,9 +87,20 @@ const Berita = ({ listKategoriBerita, listBerita }) => {
       <Box mt={20} maxW="7xl" as={Container}>
         <Box as={Row}>
           <Box sm={12} md={8} lg={8} as={Col}>
-            {listBerita?.slice(0, 3).map((el, idx) => (
-              <CardBerita {...el} idx={idx} key={el.id} />
-            ))}
+            {dataBerita?.length === 0 ? (
+              <Text
+                fontSize={"24px"}
+                textAlign={"center"}
+                fontWeight={600}
+                color="secondary.700"
+              >
+                Oops... Data Tidak di Temukan
+              </Text>
+            ) : (
+              dataBerita
+                ?.slice(0, 3)
+                .map((el, idx) => <CardBerita {...el} idx={idx} key={el.id} />)
+            )}
           </Box>
 
           <Box sm={12} md={8} lg={4} as={Col}>
@@ -84,6 +133,9 @@ const Berita = ({ listKategoriBerita, listBerita }) => {
                     flexDir="row"
                     justifyContent="space-between"
                     fontWeight="300"
+                    onClick={() => setIdKategori(el?.id)}
+                    cursor={"pointer"}
+                    _hover={{ color: "info.500" }}
                   >
                     <Text fontWeight="300">{el.nama}</Text>
                     <Text>{`( ${el.berita_count} )`}</Text>

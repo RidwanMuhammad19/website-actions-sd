@@ -41,7 +41,7 @@ const ProgramSekolah = () => {
     },
     {
       no: "2.",
-      item: "Hafal Jux 30",
+      item: "Hafal Juz 30",
     },
     {
       no: "3.",

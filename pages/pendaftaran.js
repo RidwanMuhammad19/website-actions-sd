@@ -943,7 +943,7 @@ const Pendaftaran = ({
               <FormControl isInvalid={errors?.waktu_tempuh} mb={4}>
                 <FormLabel>Waktu Tempuh (jam:menit)</FormLabel>
                 <Input
-                  type="number"
+                  type="time"
                   {...register("waktu_tempuh", { required: true })}
                 />
                 {errors?.waktu_tempuh && (
