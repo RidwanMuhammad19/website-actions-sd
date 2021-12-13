@@ -69,7 +69,7 @@ const ELearning = ({ data }) => {
         </Stack>
         <CustomButton
           text="KUNJUNGI E-LEARNING"
-          href="#"
+          href="/auth/login"
           color="white"
           bg="primary.400"
           hoverBg="primary.500"

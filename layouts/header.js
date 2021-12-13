@@ -64,7 +64,7 @@ export default function Navbar({ data }) {
                   // src={`https://actions-api-sd.sandboxindonesia.id/storage/${data?.logo}`}
                   src="/assets/logo-sd.png"
                   alt="logo"
-                  height={{xs:"46px",md:"58px"}}
+                  height={{ xs: "46px", md: "58px" }}
                 />
               </Link>
             </Flex>
@@ -89,7 +89,7 @@ export default function Navbar({ data }) {
                 borderRadius="50px"
                 width="107px"
                 height="45px"
-                href={"#"}
+                href={"/auth/login"}
                 _hover={{
                   bg: "primary.700",
                 }}
@@ -304,16 +304,11 @@ const NAV_ITEMS = [
   },
   {
     id: 4,
-    label: "Prestasi",
-    href: "/#prestasi",
-  },
-  {
-    id: 5,
     label: "Berita",
     href: "/#berita",
   },
   {
-    id: 6,
+    id: 5,
     label: "Kontak",
     href: "/#kontak",
   },
