@@ -131,7 +131,7 @@ const Footer = ({ data }) => {
             <Box pb={{ xs: 10, md: 16 }}>
               <TextHeaderFooter text="Email" />
               <Text color="white" lineHeight="2.188rem">
-                sdmuhammadiyahklatenutara @gmail.com
+                sdmuhammadiyahklatenutara@gmail.com
               </Text>
             </Box>
             <Box pb={{ xs: 10, md: 16 }}>
