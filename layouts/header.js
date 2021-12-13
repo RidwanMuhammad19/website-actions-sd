@@ -80,6 +80,7 @@ export default function Navbar({ data }) {
                 <DesktopNav />
               </Flex>
               <Button
+                as={Link}
                 display={{ base: "none", md: "inline-flex" }}
                 fontSize={"sm"}
                 fontWeight={600}
@@ -92,6 +93,7 @@ export default function Navbar({ data }) {
                 href={"/auth/login"}
                 _hover={{
                   bg: "primary.700",
+                  textDecoration: "none",
                 }}
               >
                 LOGIN
