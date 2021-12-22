@@ -55,7 +55,7 @@ export default function Login() {
       toast({
         description: `Selamat Datang ${values?.username}, Semangat belajar`,
         status: "success",
-        duration: 9000,
+        duration: 8000,
         position: "top",
         isClosable: true,
       });
@@ -64,7 +64,7 @@ export default function Login() {
       toast({
         description: `Username atau password salah`,
         status: "error",
-        duration: 9000,
+        duration: 4000,
         position: "top",
         isClosable: true,
       });
