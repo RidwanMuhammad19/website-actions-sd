@@ -78,8 +78,8 @@ const Hero = ({ data }) => {
             <Button
               color="white"
               bg="primary.600"
-              width="269px"
-              height="66px"
+              width="250px"
+              height="60px"
               fontSize="20px"
               fontWeight="600"
               borderRadius="50px"

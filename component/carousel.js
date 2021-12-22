@@ -59,8 +59,6 @@ export const Carousel = ({ slides }) => {
         overflow="hidden"
         pos="relative"
         borderRadius="1.575rem"
-        borderWidth={"1px"}
-        borderColor={"primary.600"}
       >
         <Flex h="400px" w="full" height="393px" {...carouselStyle}>
           {slides?.map((slide, sid) => (

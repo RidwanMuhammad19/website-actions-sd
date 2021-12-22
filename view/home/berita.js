@@ -146,7 +146,8 @@ const Berita = ({ listKategoriBerita, listBerita }) => {
                 borderRadius="10px"
                 borderWidth="1px"
                 lineHeight="35px"
-                p={5}
+                pb={3}
+                px={3}
                 mt={5}
                 height="100%"
                 as={Tabs}
@@ -158,7 +159,7 @@ const Berita = ({ listKategoriBerita, listBerita }) => {
                   display="flex"
                   align="center"
                   justifyContent="center"
-                  pb={3}
+                  
                   borderBottomWidth="3px"
                 >
                   <TabList>
@@ -199,7 +200,7 @@ const Berita = ({ listKategoriBerita, listBerita }) => {
                       <iframe
                         src="https://www.instagram.com/p/CWpWLz9v5CX/embed"
                         width="100%"
-                        height="450"
+                        height="350"
                         frameBorder="0"
                         allowtransparency="true"
                         allowFullScreen={true}
@@ -210,7 +211,7 @@ const Berita = ({ listKategoriBerita, listBerita }) => {
                       <iframe
                         src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fsdmuhammadiyah.klatenutara%2Fposts%2F3642347805829409&show_text=true&width=500"
                         width="100%"
-                        height="699"
+                        height="350"
                         scrolling="no"
                         frameborder="0"
                         allowfullscreen="true"

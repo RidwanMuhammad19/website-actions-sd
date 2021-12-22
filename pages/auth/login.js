@@ -43,7 +43,7 @@ export default function Login() {
       position: "top",
       isClosable: true,
     });
-    router.push("/");
+    router.push("/e-learning");
   };
 
   return (
@@ -76,8 +76,8 @@ export default function Login() {
               <Heading fontSize={"2xl"}>Masuk Sebagai Siswa</Heading>
             </Stack>
             <Stack>
-              <form onSubmit={handleSubmit(onSubmitData)}>
-                <FormControl id="username" isInvalid={errors?.username}>
+              <form onSubmit={handleSubmit(onSubmitData)} >
+                <FormControl id="username" isInvalid={errors?.username} mb={3}>
                   <FormLabel color="#6E6E6E">Email address</FormLabel>
                   <Input
                     {...register("username", { required: true })}
@@ -88,7 +88,7 @@ export default function Login() {
                     <FormErrorMessage>Enter a valid email.</FormErrorMessage>
                   )}
                 </FormControl>
-                <FormControl id="password" isInvalid={errors?.password}>
+                <FormControl mb={3} id="password" isInvalid={errors?.password}>
                   <FormLabel color="#6E6E6E">Password</FormLabel>
                   <InputGroup>
                     <Input
@@ -106,7 +106,7 @@ export default function Login() {
                     </FormErrorMessage>
                   )}
                 </FormControl>
-                <Stack spacing={10}>
+                <Stack spacing={10} pt={3}>
                   <Stack
                     direction={{ base: "column", sm: "row" }}
                     align={"start"}

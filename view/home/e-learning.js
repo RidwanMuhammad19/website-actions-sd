@@ -71,8 +71,8 @@ const ELearning = ({ data }) => {
           text="KUNJUNGI E-LEARNING"
           href="/auth/login"
           color="white"
-          bg="primary.400"
-          hoverBg="primary.500"
+          bg="primary.600"
+          hoverBg="primary.700"
         />
       </Container>
     </Box>

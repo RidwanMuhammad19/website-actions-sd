@@ -5,7 +5,13 @@ import TextHeader from "../../component/text-heder-section";
 
 const Potensi = ({ listPrestasi }) => {
   return (
-    <Box as="section" height="100%" position="relative" id="prestasi">
+    <Box
+      as="section"
+      height="100%"
+      position="relative"
+      id="prestasi"
+      bg="#F6F8FD"
+    >
       {/* SUBSTRACT BACKGROUND */}
 
       <Stack flexDirection="row">
@@ -20,10 +26,11 @@ const Potensi = ({ listPrestasi }) => {
         <Box
           position="absolute"
           right="0"
-          bottom="0"
-          backgroundImage="./assets/background/prestasiright.png"
-          width={{ xs: "30%", md: "20%" }}
-          height="30%"
+          bottom="20"
+          backgroundImage="./assets/background/setright.png"
+          bgSize="cover"
+          w="300px"
+          h="500px"
           backgroundRepeat="no-repeat"
         />
       </Stack>
@@ -33,8 +40,8 @@ const Potensi = ({ listPrestasi }) => {
           <TextHeader text="PRESTASI" width="159px" />
         </Box>
         <Box as={Row} py="10">
-          {listPrestasi?.data?.map((el) => (
-            <Box key={el.id} my="5.25rem" sm={12} md={6} lg={4} as={Col}>
+          {listPrestasi?.data?.slice(0, 6).map((el) => (
+            <Box key={el.id} my="2.75rem" sm={12} md={6} lg={4} as={Col}>
               <CardPrestasi
                 title={el.judul}
                 image={`https://actions-api-sd.sandboxindonesia.id/storage/${el.gambar}`}

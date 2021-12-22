@@ -145,8 +145,8 @@ const Informasi = ({ data }) => {
           text="DAFTAR SEKARANG"
           href="/pendaftaran"
           color="white"
-          bg="primary.400"
-          hoverBg="primary.500"
+          bg="primary.600"
+          hoverBg="primary.700"
         />
       </Container>
     </Box>

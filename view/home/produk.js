@@ -21,7 +21,7 @@ const Produk = () => {
     },
   ];
   return (
-    <Box bg="primary.100" boxShadow="md" id="produk">
+    <Box id="produk">
       <Container maxW="7xl" py={20}>
         <TextHeader text="PRODUK" />
         <Stack
