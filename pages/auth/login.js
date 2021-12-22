@@ -27,8 +27,19 @@ export default function Login() {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors, isValid },
   } = useForm({ mode: "onChange" });
+
+  const watchUsername = watch("username", null);
+  const watchPassword = watch("password", null);
+
+  const user = [
+    {
+      username: "jibril",
+      password: "123",
+    },
+  ];
 
   const [passwordShow, setPasswordShow] = useState(false);
   const togglePasswordVisiblity = () => {
@@ -36,14 +47,28 @@ export default function Login() {
   };
 
   const onSubmitData = (values) => {
-    toast({
-      description: `Selamat Datang ${values?.username}`,
-      status: "success",
-      duration: 9000,
-      position: "top",
-      isClosable: true,
-    });
-    router.push("/e-learning");
+    if (
+      user?.some(
+        (el) => el.username === watchUsername && el.password === watchPassword
+      )
+    ) {
+      toast({
+        description: `Selamat Datang ${values?.username}, Semangat belajar`,
+        status: "success",
+        duration: 9000,
+        position: "top",
+        isClosable: true,
+      });
+      router.push("/e-learning");
+    } else {
+      toast({
+        description: `Username atau password salah`,
+        status: "error",
+        duration: 9000,
+        position: "top",
+        isClosable: true,
+      });
+    }
   };
 
   return (
@@ -76,16 +101,15 @@ export default function Login() {
               <Heading fontSize={"2xl"}>Masuk Sebagai Siswa</Heading>
             </Stack>
             <Stack>
-              <form onSubmit={handleSubmit(onSubmitData)} >
+              <form onSubmit={handleSubmit(onSubmitData)}>
                 <FormControl id="username" isInvalid={errors?.username} mb={3}>
-                  <FormLabel color="#6E6E6E">Email address</FormLabel>
+                  <FormLabel color="#6E6E6E">Username</FormLabel>
                   <Input
                     {...register("username", { required: true })}
-                    type="email"
-                    placeholder="e.g. mail@address.com"
+                    type="text"
                   />
                   {errors.username && (
-                    <FormErrorMessage>Enter a valid email.</FormErrorMessage>
+                    <FormErrorMessage>Masukan username anda</FormErrorMessage>
                   )}
                 </FormControl>
                 <FormControl mb={3} id="password" isInvalid={errors?.password}>
