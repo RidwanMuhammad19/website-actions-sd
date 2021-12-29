@@ -51,7 +51,7 @@ const CardBeritaOther = ({
         pt={{ xs: 5, md: 0 }}
       >
         <Text fontSize="0.8rem" color="info.500" fontWeight={400}>
-          {kategori}
+          {kategori.nama}
         </Text>
 
         <Text color="text.subtitle" fontSize="1.0rem" fontWeight={400}>

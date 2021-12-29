@@ -32,7 +32,7 @@ const ELearningMateri = () => {
     },
     {
       id: 4,
-      materi: "Bahsa Jawa",
+      materi: "Bahasa Jawa",
       yt: "https://youtu.be/RQ1i7vQV-xc",
       kelas: "5",
       jml: 1,

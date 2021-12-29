@@ -50,7 +50,7 @@ const CardBerita = ({
 
       <Stack flex={1.5} spacing={3} px="1rem" py=".2rem">
         <Text fontSize="1rem" color="info.500" fontWeight={400}>
-          {kategori}
+          {kategori.nama}
         </Text>
 
         <Text color="text.subtitle" fontSize="1.125rem" fontWeight={400}>
