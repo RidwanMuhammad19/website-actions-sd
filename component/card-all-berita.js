@@ -57,7 +57,7 @@ const AllBerita = ({
 
       <Stack flex={3} spacing={3} px="1rem" py=".2rem">
         <Text fontSize="1.28rem" color="info.500" fontWeight={400}>
-          {kategori}
+          {kategori.nama}
         </Text>
 
         <Text color="text.subtitle" fontSize="1.825rem" fontWeight={400}>
