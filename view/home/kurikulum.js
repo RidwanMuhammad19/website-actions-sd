@@ -9,7 +9,7 @@ const Kurikulum = ({ data }) => {
       <Container maxW="7xl" py={24}>
         <TextHeader text="KURIKULUM" width={{ xs: "148px", md: "188px" }} />
         <Stack flexDir={{ xs: "column", md: "row" }} spacing={0} py={20}>
-          {data.slice(0, 4).map((el) => (
+          {data?.slice(0, 4).map((el) => (
             <Box
               key={el.id}
               flex={1}

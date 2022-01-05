@@ -44,7 +44,7 @@ export async function getServerSideProps() {
 
   //INFORMASI
   const requestInformasi = await fetch(
-    "https://actions-api-sd.sandboxindonesia.id/api/informasi",
+    "https://actions-api-sd.sandboxindonesia.id/api/kategori-informasi",
     {
       headers: {
         Accept: "application/json",
