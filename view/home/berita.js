@@ -25,6 +25,7 @@ import CardBerita from "../../view/berita/card-berita";
 import TextHeader from "../../component/text-heder-section";
 import axios from "axios";
 import ReactPlayer from "react-player";
+import Script from "next/script";
 
 const Berita = ({ listKategoriBerita, listBerita }) => {
   const { register, watch } = useForm();
@@ -159,7 +160,6 @@ const Berita = ({ listKategoriBerita, listBerita }) => {
                   display="flex"
                   align="center"
                   justifyContent="center"
-                  
                   borderBottomWidth="3px"
                 >
                   <TabList>
@@ -197,15 +197,16 @@ const Berita = ({ listKategoriBerita, listBerita }) => {
                 <Box py={2}>
                   <TabPanels>
                     <TabPanel>
-                      <iframe
-                        src="https://www.instagram.com/p/CWpWLz9v5CX/embed"
-                        width="100%"
-                        height="350"
-                        frameBorder="0"
-                        allowtransparency="true"
-                        allowFullScreen={true}
-                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-                      ></iframe>
+                      <div
+                        loading="lazy"
+                        data-mc-src="16f90b14-16d9-45d7-87fb-6a3dc1262365#instagram"
+                      />
+
+                      <Script
+                        src="https://cdn2.woxo.tech/a.js#61d5655ad2aa11001685f3f3"
+                        async
+                        data-usrc
+                      />
                     </TabPanel>
                     <TabPanel>
                       <iframe
@@ -219,10 +220,11 @@ const Berita = ({ listKategoriBerita, listBerita }) => {
                       ></iframe>
                     </TabPanel>
                     <TabPanel>
-                      <ReactPlayer
-                        width="100%"
-                        height="450"
-                        url="https://www.youtube.com/watch?v=hfPrVBAT6Vc"
+                      <div data-mc-src="a5fe9848-5e52-40ed-baa3-49ff545cbac9#youtube"></div>
+                      <Script
+                        src="https://cdn2.woxo.tech/a.js#61d5655ad2aa11001685f3f3"
+                        async
+                        data-usrc
                       />
                     </TabPanel>
                   </TabPanels>

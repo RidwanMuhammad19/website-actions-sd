@@ -57,9 +57,13 @@ const CardBerita = ({
           {judul?.length <= 35 ? judul : `${judul?.slice(0, 35)} ...`}
         </Text>
 
-        <Text color="text.description" fontSize="0.875rem">
-          {isi?.length <= 90 ? isi : `${isi?.slice(0, 45)} ...`}
-        </Text>
+        <Text
+          color="text.description"
+          fontSize="0.875rem"
+          dangerouslySetInnerHTML={{
+            __html: isi?.length <= 90 ? isi : `${isi?.slice(0, 45)} ...`,
+          }}
+        />
 
         <Text color="info.500" fontSize="sm">
           <Link href={`/berita/${slug}`}>Baca Selengkapnya</Link>
