@@ -1,12 +1,4 @@
-import {
-  Container,
-  Box,
-  Stack,
-  Text,
-  Button,
-  Image as ImageChakra,
-  StackDivider,
-} from "@chakra-ui/react";
+import { Container, Box, Stack, Text, Button, Link } from "@chakra-ui/react";
 import { Carousel } from "../../component/carousel";
 import { useRouter } from "next/router";
 import "@fontsource/lobster/400.css";
@@ -86,10 +78,13 @@ const Hero = ({ data }) => {
               boxShadow="xl"
               _hover={{
                 bg: "primary.700",
+                textDecoration: "none",
               }}
-              onClick={() => router.push("/pendaftaran")}
+              as={Link}
+              href="https://www.youtube.com/watch?v=bA8vVdDUqAQ"
+              isExternal
             >
-              DAFTAR SEKARANG
+              PROFIL SEKOLAH
             </Button>
           </Stack>
           <Box
