@@ -282,9 +282,27 @@ const Pendaftaran = ({
                   <FormErrorMessage>Masukan tanggal lahir</FormErrorMessage>
                 )}
               </FormControl>
+              <FormControl isInvalid={errors?.no_hp} mb={4}>
+                <FormLabel>No WhatsApp</FormLabel>
+                <Input {...register("no_hp", { required: true })} />
+                {errors?.no_hp && (
+                  <FormErrorMessage>Masukan No Handphone</FormErrorMessage>
+                )}
+              </FormControl>
+              <FormControl isInvalid={errors?.email_pic} mb={4}>
+                <FormLabel>Email</FormLabel>
+                <Input {...register("email_pic", { required: true })} />
+                {errors?.email_pic && (
+                  <FormErrorMessage>Masukan Email PIC</FormErrorMessage>
+                )}
+              </FormControl>
+
               <FormControl isInvalid={errors?.nisn} mb={4}>
                 <FormLabel>NISN (opsional)</FormLabel>
-                <Input {...register("nisn")} />
+                <Input {...register("nisn", { required: true })} />
+                {errors?.nisn && (
+                  <FormErrorMessage>Masukan NISN</FormErrorMessage>
+                )}
               </FormControl>
               <FormControl isInvalid={errors?.asal_sekolah} mb={4}>
                 <FormLabel>Asal Sekolah</FormLabel>
