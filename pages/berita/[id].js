@@ -65,7 +65,7 @@ const DetailBerita = ({ dataDetail, beritaOther }) => {
               textAlign="center"
               py={1}
               fontSize={{ xs: "14px", md: "20px" }}
-            >{`# ${data?.kategori}`}</Text>
+            >{`# ${data?.kategori?.nama}`}</Text>
           </Box>
           <Image
             boxShadow="lg"
@@ -109,7 +109,7 @@ const DetailBerita = ({ dataDetail, beritaOther }) => {
             BERITA LAINNYA :
           </Text>
           <Box as={Row}>
-            {listBeritaOther?.map((el, idx) => (
+            {listBeritaOther?.slice(0, 4)?.map((el, idx) => (
               <Box as={Col} sm={12} lg={6} key={el.id}>
                 <CardBeritaOther {...el} idx={idx} />
               </Box>
