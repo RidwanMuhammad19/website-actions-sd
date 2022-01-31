@@ -1,6 +1,7 @@
 import { Box, Stack, Image, Text, Avatar, Icon } from "@chakra-ui/react";
 import { Calendar as CalendarIcon } from "react-feather";
 import Link from "next/link";
+import { showImage } from "../../utils/helper";
 
 const CardBerita = ({
   slug,
@@ -43,7 +44,7 @@ const CardBerita = ({
           borderRadius="1.25rem"
           w={{ base: "100%", md: "300px" }}
           h={{ base: "auto", md: "220px" }}
-          src={`https://actions-api-sd.sandboxindonesia.id/storage/${gambar}`}
+          src={showImage(gambar)}
           alt="berita"
         />
       </Box>
@@ -60,10 +61,12 @@ const CardBerita = ({
         <Text
           color="text.description"
           fontSize="0.875rem"
-          dangerouslySetInnerHTML={{
-            __html: isi?.length <= 90 ? isi : `${isi?.slice(0, 45)} ...`,
-          }}
-        />
+          // dangerouslySetInnerHTML={{
+          //   __html: isi?.length <= 90 ? isi : `${isi?.slice(0, 45)} ...`,
+          // }}
+        >
+          {isi?.length <= 90 ? isi : `${isi?.slice(0, 45)} ...`}
+        </Text>
 
         <Text color="info.500" fontSize="sm">
           <Link href={`/berita/${slug}`}>Baca Selengkapnya</Link>
@@ -71,11 +74,7 @@ const CardBerita = ({
 
         <Stack direction="row" alignItems="center" spacing={3}>
           {avatar ? (
-            <Image
-              src={`https://actions-api-sd.sandboxindonesia.id/storage/${avatar}`}
-              alt="image-user"
-              w="50px"
-            />
+            <Image src={showImage(avatar)} alt="image-user" w="50px" />
           ) : (
             <Avatar name={penulis} alt="image-user" />
           )}

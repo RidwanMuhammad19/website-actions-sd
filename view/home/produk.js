@@ -1,25 +1,9 @@
 import React from "react";
 import { Container, Stack, Box, Image } from "@chakra-ui/react";
 import TextHeader from "../../component/text-heder-section";
+import { showImage } from "../../utils/helper";
 
-const Produk = () => {
-  const produkImage = [
-    {
-      image: "/assets/produk/Mentari.png",
-    },
-    {
-      image: "/assets/produk/fullday.png",
-    },
-    {
-      image: "/assets/produk/akreditasiA.png",
-    },
-    {
-      image: "/assets/produk/Viralku.png",
-    },
-    {
-      image: "/assets/produk/SP.png",
-    },
-  ];
+const Produk = ({ data }) => {
   return (
     <Box id="produk">
       <Container maxW="7xl" py={20}>
@@ -30,11 +14,11 @@ const Produk = () => {
           py={20}
           justifyContent="center"
         >
-          {produkImage?.map((el) => (
+          {data?.map((el) => (
             <Box key={el.image}>
               <Image
                 h={{ xs: "40px", md: "70px" }}
-                src={el.image}
+                src={showImage(el.logo)}
                 alt="gambarprestasi"
               />
             </Box>

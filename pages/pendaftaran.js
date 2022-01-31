@@ -21,6 +21,7 @@ import Select from "react-select";
 import AsyncSelect from "react-select/async";
 import axios from "axios";
 import { useRouter } from "next/router";
+import { request } from "../utils/request";
 
 export async function getServerSideProps() {
   const requestTransportasi = await fetch(
@@ -102,6 +103,10 @@ const Pendaftaran = ({
   const toast = useToast();
   const router = useRouter();
 
+  // const [listTransportasi, setListTransportrasi] = useState([]);
+  // const [listStatusAnak, setListStatusAnak] = useState([]);
+  // const [listPendidikan, setListPendidikan] = useState([]);
+  // const [listPenghasilan, setListPenghasilan] = useState([]);
   const { nextStep, prevStep, activeStep, reset } = useSteps({
     initialStep: 0,
   });
@@ -119,13 +124,8 @@ const Pendaftaran = ({
   };
 
   const listProvinsi = async () => {
-    const response = await axios.get(
-      `https://actions-api-sd.sandboxindonesia.id/api/provinces/?search${watchProvinsi}`,
-      {
-        headers: {
-          Accept: "application/json",
-        },
-      }
+    const response = await request.get(
+      `${process.env.REACT_APP_API_URL}/api/provinces/?search${watchProvinsi}`
     );
 
     return response.data.map((elem) => ({
@@ -136,7 +136,7 @@ const Pendaftaran = ({
 
   const listKabKota = async () => {
     const response = await axios.get(
-      `https://actions-api-sd.sandboxindonesia.id/api/cities/?province_code=${watchProvinsi?.value}`,
+      `${process.env.REACT_APP_API_URL}/api/cities/?province_code=${watchProvinsi?.value}`,
       {
         headers: {
           Accept: "application/json",
@@ -152,7 +152,7 @@ const Pendaftaran = ({
 
   const listKecamatan = async () => {
     const response = await axios.get(
-      `https://actions-api-sd.sandboxindonesia.id/api/districts/?city_code=${watchKabKota?.value}`,
+      `${process.env.REACT_APP_API_URL}/api/districts/?city_code=${watchKabKota?.value}`,
       {
         headers: {
           Accept: "application/json",
@@ -168,7 +168,7 @@ const Pendaftaran = ({
 
   const listDesa = async () => {
     const response = await axios.get(
-      `https://actions-api-sd.sandboxindonesia.id/api/villages/?district_code=${watchKecamatan?.value}`,
+      `${process.env.REACT_APP_API_URL}/api/villages/?district_code=${watchKecamatan?.value}`,
       {
         headers: {
           Accept: "application/json",

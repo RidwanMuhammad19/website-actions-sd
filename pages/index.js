@@ -10,17 +10,16 @@ import Produk from "../view/home/produk";
 export async function getServerSideProps() {
   //BERITA
   const reaquestListBerita = await fetch(
-    `https://actions-api-sd.sandboxindonesia.id/api/berita`,
+    `${process.env.REACT_APP_API_URL}/api/berita`,
     {
       headers: {
         Accept: "application/json",
       },
     }
   );
-  // ?search=${query.search}
 
   const requestKategoriBerita = await fetch(
-    "https://actions-api-sd.sandboxindonesia.id/api/kategori-berita",
+    `${process.env.REACT_APP_API_URL}/api/kategori-berita`,
     {
       headers: {
         Accept: "application/json",
@@ -32,7 +31,7 @@ export async function getServerSideProps() {
 
   //KURIKULUM
   const requestKurikulum = await fetch(
-    "https://actions-api-sd.sandboxindonesia.id/api/kurikulum",
+    `${process.env.REACT_APP_API_URL}/api/kurikulum`,
     {
       headers: {
         Accept: "application/json",
@@ -44,7 +43,7 @@ export async function getServerSideProps() {
 
   //INFORMASI
   const requestInformasi = await fetch(
-    "https://actions-api-sd.sandboxindonesia.id/api/kategori-informasi",
+    `${process.env.REACT_APP_API_URL}/api/kategori-informasi`,
     {
       headers: {
         Accept: "application/json",
@@ -56,7 +55,7 @@ export async function getServerSideProps() {
 
   //POTENSI
   const requestListPrestasi = await fetch(
-    "https://actions-api-sd.sandboxindonesia.id/api/prestasi",
+    `${process.env.REACT_APP_API_URL}/api/prestasi`,
     {
       headers: {
         Accept: "application/json",
@@ -67,7 +66,7 @@ export async function getServerSideProps() {
 
   //E-LEARNING
   const requestELearning = await fetch(
-    "https://actions-api-sd.sandboxindonesia.id/api/elearning",
+    `${process.env.REACT_APP_API_URL}/api/elearning`,
     {
       headers: {
         Accept: "application/json",
@@ -78,7 +77,7 @@ export async function getServerSideProps() {
 
   //PROFIL
   const requestProfil = await fetch(
-    "https://actions-api-sd.sandboxindonesia.id/api/profil-sekolah",
+    `${process.env.REACT_APP_API_URL}/api/profil-sekolah`,
     {
       headers: {
         Accept: "application/json",
@@ -86,6 +85,17 @@ export async function getServerSideProps() {
     }
   );
   const dataProfil = await requestProfil.json();
+
+  //PRODUK
+  const requestProduk = await fetch(
+    `${process.env.REACT_APP_API_URL}/api/produk`,
+    {
+      headers: {
+        Accept: "application/json",
+      },
+    }
+  );
+  const dataProduk = await requestProduk.json();
 
   return {
     props: {
@@ -96,6 +106,7 @@ export async function getServerSideProps() {
       listKurikulum,
       listInformasi,
       dataProfil,
+      dataProduk,
     },
   };
 }
@@ -108,6 +119,7 @@ const Home = ({
   listKurikulum,
   listInformasi,
   dataProfil,
+  dataProduk,
 }) => {
   return (
     <Layouts data={dataProfil?.data}>
@@ -119,7 +131,7 @@ const Home = ({
       <Kurikulum data={listKurikulum?.data} />
       <Informasi data={listInformasi?.data} />
       <ELearning data={dataELearning?.data} />
-      <Produk />
+      <Produk data={dataProduk?.data} />
       <Prestasi listPrestasi={listPrestasi} />
     </Layouts>
   );

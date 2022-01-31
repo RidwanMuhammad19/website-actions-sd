@@ -1,5 +1,6 @@
 import { Box, Stack, Image, Text, Avatar, Icon } from "@chakra-ui/react";
 import { Calendar as CalendarIcon } from "react-feather";
+import { showImage } from "../utils/helper";
 import Link from "next/link";
 
 const CardBeritaOther = ({
@@ -38,7 +39,7 @@ const CardBeritaOther = ({
           borderRadius="1.25rem"
           w={{ base: "100%", md: "250px" }}
           h={{ base: "auto", md: "150px" }}
-          src={`https://actions-api-sd.sandboxindonesia.id/storage/${gambar}`}
+          src={showImage(gambar)}
           alt="berita"
         />
       </Box>
@@ -68,11 +69,7 @@ const CardBeritaOther = ({
 
         <Stack direction="row" alignItems="center" spacing={3}>
           {avatar ? (
-            <Image
-              src={`https://actions-api-sd.sandboxindonesia.id/storage/${avatar}`}
-              alt="image-user"
-              w="40px"
-            />
+            <Image src={showImage(avatar)} alt="image-user" w="40px" />
           ) : (
             <Avatar name={penulis} alt="image-user" />
           )}

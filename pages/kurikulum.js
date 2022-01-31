@@ -3,11 +3,12 @@ import Layouts from "../layouts";
 import { Stack, Box, Text, Container, Image } from "@chakra-ui/react";
 import CustomButton from "../component/custom-button";
 import TextHeader from "../component/text-heder-section";
+import { showImage } from "../utils/helper";
 
 export async function getServerSideProps() {
   //KURIKULUM
   const request = await fetch(
-    "https://actions-api-sd.sandboxindonesia.id/api/kurikulum",
+    `${process.env.REACT_APP_API_URL}/api/kurikulum`,
     {
       headers: {
         Accept: "application/json",
@@ -26,6 +27,9 @@ export async function getServerSideProps() {
 
 const Kurikulum = ({ dataKurikulum }) => {
   const data = dataKurikulum?.data;
+
+  console.log(data, "hereee is");
+
   return (
     <Layouts>
       <Container pt="100px" maxW="6xl" h="100%">
@@ -46,7 +50,7 @@ const Kurikulum = ({ dataKurikulum }) => {
               boxShadow="xl"
             >
               <Image
-                src={`https://actions-api-sd.sandboxindonesia.id/storage/${el?.gambar}`}
+                src={showImage(el?.gambar)}
                 h="80px"
                 alt="gambar"
               />

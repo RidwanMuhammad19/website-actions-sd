@@ -2,6 +2,7 @@ import { Box, Container, Stack } from "@chakra-ui/react";
 import { Row, Col } from "react-grid-system";
 import CardPrestasi from "../../component/card-prestasi";
 import TextHeader from "../../component/text-heder-section";
+import { showImage } from "../../utils/helper";
 
 const Potensi = ({ listPrestasi }) => {
   return (
@@ -44,7 +45,7 @@ const Potensi = ({ listPrestasi }) => {
             <Box key={el.id} my="2.75rem" sm={12} md={6} lg={4} as={Col}>
               <CardPrestasi
                 title={el.judul}
-                image={`https://actions-api-sd.sandboxindonesia.id/storage/${el.gambar}`}
+                image={el?.gambar}
                 href={el.slug}
               />
             </Box>

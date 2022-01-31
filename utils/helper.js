@@ -2,9 +2,13 @@ import format from "date-fns/format";
 import idLocale from "date-fns/locale/id";
 import { CONVERT_DATE_TYPE } from "./constants";
 
+export const showImage = (data) => {
+  return `${process.env.REACT_APP_API_URL}/storage/${data}`;
+};
+
 export const convertDate = (date, type) => {
   let pattern = /(\d{4})\-(\d{2})\-(\d{2})/;
-  const defaultDate = date?.replace(pattern, "$2/$3/$1");
+const defaultDate = date?.replace(pattern, "$2/$3/$1");
 
   let formatDate;
 

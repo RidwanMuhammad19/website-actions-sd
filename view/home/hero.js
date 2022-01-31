@@ -3,19 +3,20 @@ import { Carousel } from "../../component/carousel";
 import { useRouter } from "next/router";
 import "@fontsource/lobster/400.css";
 import "@fontsource/comic-neue/400.css";
+import { showImage } from "../../utils/helper";
 
 const Hero = ({ data }) => {
   const router = useRouter();
 
   const slides = [
     {
-      img: `https://actions-api-sd.sandboxindonesia.id/storage/${data?.hero_image1}`,
+      img: showImage(data?.hero_image1),
     },
     {
-      img: `https://actions-api-sd.sandboxindonesia.id/storage/${data?.hero_image2}`,
+      img: showImage(data?.hero_image2),
     },
     {
-      img: `https://actions-api-sd.sandboxindonesia.id/storage/${data?.hero_image3}`,
+      img: showImage(data?.hero_image3),
     },
   ];
 

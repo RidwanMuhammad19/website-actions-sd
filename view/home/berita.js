@@ -41,7 +41,7 @@ const Berita = ({ listKategoriBerita, listBerita }) => {
     if (typeof idKategori === "number") {
       axios({
         method: "get",
-        url: `https://actions-api-sd.sandboxindonesia.id/api/kategori-berita/${idKategori}`,
+        url: `${process.env.REACT_APP_API_URL}/api/kategori-berita/${idKategori}`,
         headers: {
           Accept: "application/json",
         },
@@ -54,7 +54,7 @@ const Berita = ({ listKategoriBerita, listBerita }) => {
       setIdKategori(null);
       axios({
         method: "get",
-        url: `https://actions-api-sd.sandboxindonesia.id/api/berita/?search=${debonceSearch}`,
+        url: `${process.env.REACT_APP_API_URL}/api/berita/?search=${debonceSearch}`,
         headers: {
           Accept: "application/json",
         },

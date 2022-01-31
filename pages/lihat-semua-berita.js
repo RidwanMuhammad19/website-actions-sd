@@ -1,4 +1,4 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import { Box, Container } from "@chakra-ui/react";
 import TextHeader from "../component/text-heder-section";
 import Layouts from "../layouts";
@@ -7,7 +7,7 @@ import CardAllBerita from "../component/card-all-berita";
 
 export async function getServerSideProps() {
   const requestList = await fetch(
-    `https://actions-api-sd.sandboxindonesia.id/api/berita`,
+    `${process.env.REACT_APP_API_URL}/api/berita`,
     {
       headers: {
         Accept: "application/json",
@@ -24,7 +24,6 @@ export async function getServerSideProps() {
 
 const LihatSemuaBerita = ({ listData }) => {
   const data = listData?.data;
-
   return (
     <Layouts>
       <Container py="100px" maxW="7xl" h="100%">

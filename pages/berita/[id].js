@@ -12,12 +12,13 @@ import { Row, Col } from "react-grid-system";
 import Layouts from "../../layouts";
 import ButtonBack from "../../component/button-back";
 import CardBeritaOther from "../../component/card-berita-other";
+import { showImage } from "../../utils/helper";
 
 export async function getServerSideProps(context) {
   const { params: id } = context;
 
   const requestDetailBerita = await fetch(
-    `https://actions-api-sd.sandboxindonesia.id/api/berita/slug/${id.id}`,
+    `${process.env.REACT_APP_API_URL}/api/berita/slug/${id.id}`,
     {
       headers: {
         Accept: "application/json",
@@ -26,7 +27,7 @@ export async function getServerSideProps(context) {
   );
 
   const requestOther = await fetch(
-    `https://actions-api-sd.sandboxindonesia.id/api/berita/?except=${id.id}`,
+    `${process.env.REACT_APP_API_URL}/api/berita/?except=${id.id}`,
     {
       headers: {
         Accept: "application/json",
@@ -70,7 +71,7 @@ const DetailBerita = ({ dataDetail, beritaOther }) => {
           <Image
             boxShadow="lg"
             borderRadius="20px"
-            src={`https://actions-api-sd.sandboxindonesia.id/storage/${data?.gambar}`}
+            src={showImage(data?.gambar)}
             alt="gambarberita"
             width="100%"
             height="450px"

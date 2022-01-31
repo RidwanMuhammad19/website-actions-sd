@@ -1,6 +1,7 @@
 import { Box, Stack, Image, Text, Avatar, Icon } from "@chakra-ui/react";
 import { Calendar as CalendarIcon } from "react-feather";
 import Link from "next/link";
+import { showImage } from "../utils/helper";
 
 const AllBerita = ({
   slug,
@@ -13,8 +14,6 @@ const AllBerita = ({
   waktu_publikasi,
   avatar,
 }) => {
-  const dumyText =
-    "Bencana Alam Terjadi di Lumajang Jawa Timur, Gunung Semeru Meletus dengan Kencang, Jam 4 Sore sudah terasa jam 8 Malam";
   return (
     <Stack
       mb="4.688rem"
@@ -50,7 +49,7 @@ const AllBerita = ({
           borderRadius="1.25rem"
           w={{ base: "100%", md: "400px" }}
           h={{ base: "auto", md: "290px" }}
-          src={`https://actions-api-sd.sandboxindonesia.id/storage/${gambar}`}
+          src={showImage(gambar)}
           alt="berita"
         />
       </Box>
@@ -78,11 +77,7 @@ const AllBerita = ({
 
         <Stack direction="row" alignItems="center" spacing={3}>
           {avatar ? (
-            <Image
-              src={`https://actions-api-sd.sandboxindonesia.id/storage/${avatar}`}
-              alt="image-user"
-              w="50px"
-            />
+            <Image src={showImage(avatar)} alt="image-user" w="50px" />
           ) : (
             <Avatar name={penulis} alt="image-user" />
           )}

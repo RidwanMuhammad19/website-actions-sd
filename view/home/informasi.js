@@ -14,6 +14,7 @@ import {
 } from "@chakra-ui/react";
 import { CheckIcon } from "@chakra-ui/icons";
 import CustomButton from "../../component/custom-button";
+import { showImage } from "../../utils/helper";
 
 const Informasi = ({ data }) => {
   return (
@@ -75,7 +76,7 @@ const Informasi = ({ data }) => {
                   p={5}
                 >
                   <Image
-                    src={`https://actions-api-sd.sandboxindonesia.id/storage/${el.icon}`}
+                    src={showImage(el?.icon)}
                     alt="icon"
                     w="50"
                     h="50"

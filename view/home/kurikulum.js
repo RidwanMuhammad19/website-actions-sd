@@ -2,6 +2,7 @@ import React from "react";
 import { Container, Box, Stack, Text, Image } from "@chakra-ui/react";
 import TextHeader from "../../component/text-heder-section";
 import CustomButton from "../../component/custom-button";
+import { showImage } from "../../utils/helper";
 
 const Kurikulum = ({ data }) => {
   return (
@@ -27,7 +28,7 @@ const Kurikulum = ({ data }) => {
                 justifyContent="center"
               >
                 <Image
-                  src={`https://actions-api-sd.sandboxindonesia.id/storage/${el.gambar}`}
+                  src={showImage(el?.gambar)}
                   alt="icon"
                   h={{ xs: "50px", md: "50px" }}
                 />
