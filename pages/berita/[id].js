@@ -14,11 +14,13 @@ import ButtonBack from "../../component/button-back";
 import CardBeritaOther from "../../component/card-berita-other";
 import { showImage } from "../../utils/helper";
 
+const ROOT_API = process.env.REACT_APP_API_URL;
+
 export async function getServerSideProps(context) {
   const { params: id } = context;
 
   const requestDetailBerita = await fetch(
-    `${process.env.REACT_APP_API_URL}/api/berita/slug/${id.id}`,
+    `${ROOT_API}/api/berita/slug/${id.id}`,
     {
       headers: {
         Accept: "application/json",
@@ -26,14 +28,11 @@ export async function getServerSideProps(context) {
     }
   );
 
-  const requestOther = await fetch(
-    `${process.env.REACT_APP_API_URL}/api/berita/?except=${id.id}`,
-    {
-      headers: {
-        Accept: "application/json",
-      },
-    }
-  );
+  const requestOther = await fetch(`${ROOT_API}/api/berita/?except=${id.id}`, {
+    headers: {
+      Accept: "application/json",
+    },
+  });
 
   const beritaOther = await requestOther.json();
   const dataDetail = await requestDetailBerita.json();
